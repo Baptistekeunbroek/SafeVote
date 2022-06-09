@@ -1,7 +1,20 @@
 import logo from './logo.svg';
 import './App.css';
 
+import axios from 'axios';
+
 function App() {
+  const register = async () => {
+    const { data } = await axios
+      .post('http://localhost:5000/register', {
+        name: 'John',
+        password: '123456',
+      })
+      .then((res) => {
+        console.log(res);
+      });
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -18,6 +31,7 @@ function App() {
           Learn React
         </a>
       </header>
+      <button onClick={register}>Register</button>
     </div>
   );
 }
