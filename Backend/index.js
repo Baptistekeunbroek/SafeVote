@@ -32,6 +32,24 @@ app.post('/register', (req, res) => {
   });
 });
 
+app.post('/login', (req, res) => {
+  const { name, password } = req.body;
+  console.log(name, password);
+  const query = `SELECT * FROM utilisateurs WHERE username = '${name}' AND password = '${password}'`;
+  db.query(query, (err, result) => {
+    if (err) {
+      res.status(500).send(err);
+      console.log(err);
+    } else {
+      if (result.length === 0) {
+        res.send('Invalid credentials');
+      } else {
+        res.send(result);
+      }
+    }
+  });
+});
+
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });
