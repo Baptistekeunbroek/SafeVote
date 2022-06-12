@@ -19,9 +19,9 @@ const db = mysql.createConnection({
 });
 
 app.post('/register', (req, res) => {
-  const { name, password } = req.body;
-  console.log(name, password);
-  const query = `INSERT INTO utilisateurs (username, password) VALUES ('${name}', '${password}')`;
+  const { email, password, nom, prenom, dateDeNaissance } = req.body;
+  console.log(email, password);
+  const query = `INSERT INTO utilisateurs (email, password, nom, prenom, dateDeNaissance) VALUES ('${email}', '${password}','${nom}','${prenom}','${dateDeNaissance}')`;
   db.query(query, (err, result) => {
     if (err) {
       res.status(500).send(err);

@@ -4,8 +4,11 @@ use safevote;
 
 CREATE TABLE utilisateurs(
    id INT NOT NULL AUTO_INCREMENT,
-   username VARCHAR(50),
+   email VARCHAR(50),
+   nom VARCHAR(50),
+   prenom VARCHAR(50),
    password VARCHAR(50),
+   dateDeNaissance VARCHAR(50),
    PRIMARY KEY(id)
 );
 
