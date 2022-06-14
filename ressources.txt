@@ -15,4 +15,27 @@ Try connecting using node after you do so.
 If that doesn't work, try it without @'localhost' part.
 
 
+------------------------------------------------------
 
+
+
+function getUserByEmail(email) {
+  return db.query(
+    'SELECT * FROM users WHERE email = ?',
+    [email],
+    (err, results) => {
+      if (err) {
+        throw err;
+      }
+      return results[0];
+    }
+  );
+}
+function getUserById(id) {
+  return db.query('SELECT * FROM users WHERE id = ?', [id], (err, results) => {
+    if (err) {
+      throw err;
+    }
+    return results[0];
+  });
+}
