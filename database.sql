@@ -7,7 +7,7 @@ CREATE TABLE utilisateurs(
    email VARCHAR(50),
    nom VARCHAR(50),
    prenom VARCHAR(50),
-   password VARCHAR(50),
+   password VARCHAR(60),
    dateDeNaissance VARCHAR(50),
    PRIMARY KEY(id)
 );

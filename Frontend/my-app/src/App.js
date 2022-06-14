@@ -2,6 +2,10 @@ import './App.css';
 import { Register } from './components/register';
 import { Login } from './components/login';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { UserInfo } from './components/userInfo';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function Home() {
   return (
@@ -53,6 +57,35 @@ function Home() {
 }
 
 function App() {
+  function IsUserLoggedIn() {
+    const navigate = useNavigate();
+    console.log('IsUserLoggedIn');
+    const [loggedIn, setLoggedIn] = useState(false);
+
+    axios
+      .get('http://localhost:5000/checkAuthentication', {
+        withCredentials: true,
+      })
+      .then((res) => {
+        setLoggedIn(res.data.authenticated);
+      })
+      .catch((error) => {
+        console.log(error);
+        setLoggedIn(false);
+      });
+
+    return (
+      <Route
+        exact
+        path="/login"
+        element={<Login />}
+        render={() => {
+          loggedIn() ? navigate('/userInfo') : navigate('/login');
+        }}
+      />
+    );
+  }
+
   return (
     <div className="App">
       <Router>
@@ -61,8 +94,15 @@ function App() {
         </a>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/register" element={<Register />} />
+          <Route
+            path="/register"
+            element={<Register />}
+            render={() => {
+              alert('dd');
+            }}
+          />
           <Route path="/login" element={<Login />} />
+          <Route path="/userinfo" element={<UserInfo />} />
         </Routes>
       </Router>
     </div>

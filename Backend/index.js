@@ -2,51 +2,63 @@ require('dotenv').config();
 const express = require('express');
 const mysql = require('mysql');
 const cors = require('cors');
-const bcrypt = require('bcrypt');
 const passport = require('passport');
-const bodyParser = require('body-parser');
 const session = require('express-session');
-const flash = require('connect-flash');
-const cookieParser = require('cookie-parser');
 const initializePassport = require('./passportConfig');
+const MySQLStore = require('express-mysql-session')(session);
+const path = require('path');
+const flash = require('connect-flash');
 const app = express();
-const passportLocal = require('passport-local').Strategy;
+const bcrypt = require('bcrypt');
 
-const db = mysql.createConnection({
-  user: 'root',
+let options = {
   host: 'localhost',
+  user: 'root',
+  port: 3306,
   password: 'password',
   database: 'safevote',
-});
+};
+
+const db = mysql.createConnection(options);
+let sessionStore = new MySQLStore({}, db);
 
 app.use(express.json());
-// app.use(cookieParser('secret'));
+
 app.use(
   cors({
     origin: '*',
+    credentials: true,
+    methods: ['GET', 'POST'],
   })
 );
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.use(
   session({
-    secret: 'keyboard cat',
-    resave: false,
+    secret: 'secret',
     saveUninitialized: false,
-    // cookie: {
-    //   maxAge: 1000 * 60 * 60 * 24, // 86400000 1 day
-    // },
+    resave: false,
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 24,
+      secure: false,
+    },
+    store: sessionStore,
   })
 );
-// app.use(flash());
+app.use(flash());
 app.use(passport.initialize());
+
 app.use(passport.session());
+
+app.use(passport.authenticate('session'));
+
 initializePassport(passport, db);
 
 app.post('/register', (req, res) => {
   const { email, password, nom, prenom, dateDeNaissance } = req.body;
-  console.log(email, password);
-  const query = `INSERT INTO utilisateurs (email, password, nom, prenom, dateDeNaissance) VALUES ('${email}', '${password}','${nom}','${prenom}','${dateDeNaissance}')`;
+  // console.log(email, password);
+  const HashedPassword = bcrypt.hashSync(password, 10);
+  const query = `INSERT INTO utilisateurs (email, password, nom, prenom, dateDeNaissance) VALUES ('${email}', '${HashedPassword}','${nom}','${prenom}','${dateDeNaissance}')`;
   db.query(query, (err, result) => {
     if (err) {
       res.status(500).send(err);
@@ -57,8 +69,13 @@ app.post('/register', (req, res) => {
   });
 });
 
+app.get('/flash', function (req, res) {
+  // Set a flash message by passing the key, followed by the value, to req.flash().
+  req.flash('info', 'Flash is back!');
+  // res.redirect('/');
+});
+
 app.post('/login', (req, res, next) => {
-  console.log(req.body);
   passport.authenticate(
     'local',
     {
@@ -67,16 +84,22 @@ app.post('/login', (req, res, next) => {
       failureMessage: 'Invalid username or password.',
     },
     (err, user) => {
-      console.log(user);
-      if (err) throw err;
+      if (err) {
+        console.log(err);
+        return res.sendStatus(500);
+      }
       if (!user) console.log('No User Exists');
       else {
-        req.logIn(user, (err) => {
+        req.login(user, (err) => {
           if (err) {
             console.log(err);
+            return res.sendStatus(500);
           } else {
-            res.send('Successfully Authenticated');
-            console.log(req.user);
+            // console.log(req.session);
+
+            res.send(true);
+            next();
+            return;
           }
         });
       }
@@ -88,13 +111,30 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
+app.post('/logout', function (req, res, next) {
+  // console.log(req.session);
+  req.logout(function (err) {
+    if (err) {
+      return next(err);
+    }
+    console.log('Logged out');
+    res.send('logout');
+  });
+});
+
 app.get('/checkAuthentication', (req, res) => {
   const authenticated = req.isAuthenticated();
-  // console.log(req);
-  console.log(req.isAuthenticated());
-  res.status(200).json({
-    authenticated,
-  });
+
+  console.log(authenticated);
+  if (authenticated) {
+    res.status(200).json({
+      auth: true,
+    });
+  } else {
+    res.status(200).json({
+      auth: false,
+    });
+  }
 });
 
 app.listen(5000, () => {

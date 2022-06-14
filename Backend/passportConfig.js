@@ -4,18 +4,6 @@ const bcrypt = require('bcrypt');
 function initializePassport(passport, connection) {
   console.log('initialize');
 
-  passport.serializeUser(function (user, done) {
-    console.log(user);
-    done(null, user.id);
-  });
-  passport.deserializeUser(function (id, done) {
-    connection.query(
-      'select * from utilisateurs where id = ' + id,
-      function (err, rows) {
-        done(err, rows[0]);
-      }
-    );
-  });
   passport.use(
     new LocalStrategy(
       {
@@ -32,13 +20,9 @@ function initializePassport(passport, connection) {
             if (!rows.length) {
               return done(null, false);
             }
-
-            if (!(rows[0].password == password))
-              return done(
-                null,
-                false
-                // req.flash('loginMessage', 'Oops! Wrong password.')
-              ); // create the loginMessage and save it to session as flashdata
+            if (!bcrypt.compareSync(password, rows[0].password)) {
+              return done(null, false);
+            }
 
             // all is well, return successful user
             // console.log(rows[0]);
@@ -48,6 +32,23 @@ function initializePassport(passport, connection) {
       }
     )
   );
+  passport.serializeUser(function (user, done) {
+    console.log('serializeUser'); //is show in console
+    done(null, user.id);
+  });
+  passport.deserializeUser(function (id, done) {
+    console.log('deserializeUser');
+    done(null, id);
+    // connection.query(
+    //   'select * from utilisateurs where id = ' + id,
+    //   function (err, rows) {
+    //     // console.log(rows[0]);
+    //     if (err) throw err;
+
+    //     done(null,user);
+    //   }
+    // );
+  });
 }
 
 module.exports = initializePassport;
