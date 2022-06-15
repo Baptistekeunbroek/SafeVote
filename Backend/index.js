@@ -55,10 +55,11 @@ app.use(passport.authenticate('session'));
 initializePassport(passport, db);
 
 app.post('/register', (req, res) => {
-  const { email, password, nom, prenom, dateDeNaissance } = req.body;
+  const { email, password, nom, prenom, dateDeNaissance, tel, genre } =
+    req.body;
   // console.log(email, password);
   const HashedPassword = bcrypt.hashSync(password, 10);
-  const query = `INSERT INTO utilisateurs (email, password, nom, prenom, dateDeNaissance) VALUES ('${email}', '${HashedPassword}','${nom}','${prenom}','${dateDeNaissance}')`;
+  const query = `INSERT INTO utilisateurs (email, password, nom, prenom, dateDeNaissance, genre, tel) VALUES ('${email}', '${HashedPassword}','${nom}','${prenom}','${dateDeNaissance}','${genre}','${tel}')`;
   db.query(query, (err, result) => {
     if (err) {
       res.status(500).send(err);
@@ -135,6 +136,25 @@ app.get('/checkAuthentication', (req, res) => {
       auth: false,
     });
   }
+});
+
+app.get('/getUser', (req, res) => {
+  const query = `SELECT * FROM utilisateurs WHERE email = '${req.user.email}'`;
+  db.query(query, (err, result) => {
+    if (err) {
+      res.status(500).send(err);
+      console.log(err);
+    } else {
+      // console.log(result);
+      res.status(200).json({
+        email: result[0].email,
+        nom: result[0].nom,
+        prenom: result[0].prenom,
+        tel: result[0].tel,
+        genre: result[0].genre,
+      });
+    }
+  });
 });
 
 app.listen(5000, () => {

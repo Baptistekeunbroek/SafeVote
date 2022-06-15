@@ -2,50 +2,63 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import './register.css';
 import DatePicker from 'react-date-picker';
+import { useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import * as Yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 export function Register() {
-  const [passwordReg, setPasswordReg] = useState('');
   const [naissanceReg, setNaissanceReg] = useState(null);
-  const [emailReg, setEmailReg] = useState('');
-  const [nomReg, setNomReg] = useState('');
-  const [prenomReg, setPrenomReg] = useState('');
-  const [passwordConfirmReg, setPasswordConfirmReg] = useState('');
   const [datesend, setDatesend] = useState(null);
+  const [data, setData] = useState('');
+  const formSchema = Yup.object().shape({
+    mdp: Yup.string()
+      .required('Un mot de passe est requis')
+      .min(4, 'Le mot de passe fait au moins 4 caractères')
+      .max(12, 'Le mot de passe fait ne doit pas faire plus de 12 caractères'),
+    mdpVerif: Yup.string()
+      .required('La confirmation du mot de passe est requis')
+      .oneOf([Yup.ref('mdp')], 'Les mots de passes sont différents'),
+    Prenom: Yup.string().required('Un prenom est requis'),
+    Nom: Yup.string().required('Un nom est requis'),
+    Email: Yup.string().required('un email est requis').email('Email invalide'),
+    Tel: Yup.string()
+      .required('Le téléphone est requis')
+      .matches(/^\d{10}$/, 'Le numéro de téléphone doit contenir 10 chiffres'),
+  });
 
-  const register = async () => {
-    if (
-      passwordReg === '' ||
-      emailReg === '' ||
-      naissanceReg === null ||
-      nomReg === '' ||
-      prenomReg === ''
-    ) {
-      alert('Veuillez remplir tous les champs');
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    mode: 'onTouched',
+    resolver: yupResolver(formSchema),
+  });
+  const onSubmit = (data) => setData(data);
+  console.log(errors);
+  const navigate = useNavigate();
+
+  const registerr = async () => {
+    if (naissanceReg === null) {
       return;
     }
-    if (passwordReg !== passwordConfirmReg) {
-      alert('Les mots de passe ne correspondent pas');
-      return;
-    }
-
     await axios
       .post('http://localhost:5000/register', {
-        email: emailReg,
-        nom: nomReg,
-        prenom: prenomReg,
+        email: data.Email,
+        nom: data.Nom,
+        prenom: data.Prenom,
         dateDeNaissance: datesend,
-        password: passwordReg,
+        password: data.mdp,
+        tel: data.Tel,
+        genre: data.Genre,
       })
       .then((res) => {
         console.log({ res: res });
-        setPasswordReg('');
-        setEmailReg('');
-        setNomReg('');
-        setPrenomReg('');
         setNaissanceReg(null);
-        setPasswordConfirmReg('');
         setDatesend(null);
         alert('Inscription réussie');
+        setData('');
       });
   };
 
@@ -70,52 +83,51 @@ export function Register() {
 
   return (
     <div className="register">
-      <input
-        type="text"
-        required
-        placeholder="Nom"
-        value={nomReg}
-        onChange={(e) => setNomReg(e.target.value)}
-      />
-      <input
-        type="text"
-        required
-        placeholder="Prenom"
-        value={prenomReg}
-        onChange={(e) => setPrenomReg(e.target.value)}
-      />
+      <h1>Créer un compte</h1>
+      <form onSubmit={handleSubmit(onSubmit)} className="register">
+        <select {...register('Genre', { required: true })}>
+          <option value="Mr">Mr</option>
+          <option value="Mrs">Mme</option>
+          <option value="Miss">Autre</option>
+        </select>
 
-      <div className="naissance">
-        <label className="naissanceLabel">Date de Naissance</label>
+        <input type="text" placeholder="Prenom" {...register('Prenom')} />
+        {errors.Prenom && <p className="errorLogin">{errors.Prenom.message}</p>}
+
+        <input type="text" placeholder="Nom" {...register('Nom')} />
+        {errors.Nom && <p className="errorLogin">{errors.Nom.message}</p>}
+
+        <input type="text" placeholder="Email" {...register('Email')} />
+        {errors.Email && <p className="errorLogin">{errors.Email.message}</p>}
+
+        <input type="tel" placeholder="Téléphone" {...register('Tel')} />
+        {errors.Tel && <p className="errorLogin">{errors.Tel.message}</p>}
+
         <DatePicker
           onChange={setNaissanceReg}
           value={naissanceReg}
           format="dd-MM-y"
         />
-      </div>
-      <input
-        type="email"
-        required
-        placeholder="Email"
-        value={emailReg}
-        onChange={(e) => setEmailReg(e.target.value)}
-      />
-      <input
-        type="password"
-        required
-        placeholder="Mot de passe"
-        value={passwordReg}
-        onChange={(e) => setPasswordReg(e.target.value)}
-      />
-      <input
-        type="password"
-        required
-        placeholder="Confirmer mot de passe"
-        value={passwordConfirmReg}
-        onChange={(e) => setPasswordConfirmReg(e.target.value)}
-      />
 
-      <button onClick={register}>Register</button>
+        <input
+          type="password"
+          placeholder="Mot de passe"
+          {...register('mdp')}
+        />
+        {errors.mdp && <p className="errorLogin">{errors.mdp.message}</p>}
+        <input
+          type="password"
+          placeholder="Répétez le mot de passe"
+          {...register('mdpVerif')}
+        />
+        {errors.mdpVerif && (
+          <p className="errorLogin">{errors.mdpVerif.message}</p>
+        )}
+
+        <input type="submit" placeholder="S'inscrire" onClick={registerr} />
+      </form>
+      <p>Vous avez déjà un compte? Connetez vous !</p>
+      <button onClick={() => navigate('/login')}>Se connecter</button>
     </div>
   );
 }

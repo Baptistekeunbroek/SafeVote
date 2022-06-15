@@ -44,16 +44,10 @@ export function Login() {
         }
       });
   };
-  const logout = () => {
-    axios
-      .post('http://localhost:5000/logout', {}, { withCredentials: true })
-      .then((res) => {
-        console.log({ res: res });
-      });
-  };
 
   return (
     <div className="App">
+      <h1>Connexion</h1>
       <div className="login">
         <input
           type="text"
@@ -67,9 +61,10 @@ export function Login() {
           value={passwordLog}
           onChange={(e) => setPasswordLog(e.target.value)}
         />
-        <button onClick={login}>Login</button>
-        <button onClick={logout}>Logout</button>
+        <button onClick={login}>Connexion</button>
       </div>
+      <p>Vous n'avez pas encore créé de compte? faite en un maintenant !</p>
+      <button onClick={() => navigate('/register')}>Créer un compte</button>
     </div>
   );
 }

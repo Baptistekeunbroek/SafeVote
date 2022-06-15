@@ -34,11 +34,11 @@ function initializePassport(passport, connection) {
   );
   passport.serializeUser(function (user, done) {
     console.log('serializeUser'); //is show in console
-    done(null, user.id);
+    done(null, user);
   });
-  passport.deserializeUser(function (id, done) {
+  passport.deserializeUser(function (user, done) {
     console.log('deserializeUser');
-    done(null, id);
+    done(null, user);
     // connection.query(
     //   'select * from utilisateurs where id = ' + id,
     //   function (err, rows) {
