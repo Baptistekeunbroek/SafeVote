@@ -21,7 +21,7 @@ export function Register() {
       .oneOf([Yup.ref('mdp')], 'Les mots de passes sont différents'),
     Prenom: Yup.string().required('Un prenom est requis'),
     Nom: Yup.string().required('Un nom est requis'),
-    Email: Yup.string().required('un email est requis').email('Email invalide'),
+    Email: Yup.string().required('Un email est requis').email('Email invalide'),
     Tel: Yup.string()
       .required('Le téléphone est requis')
       .matches(/^\d{10}$/, 'Le numéro de téléphone doit contenir 10 chiffres'),
@@ -83,51 +83,91 @@ export function Register() {
 
   return (
     <div className="register">
-      <h1>Créer un compte</h1>
+      <h1 className="h1Register">Créer un compte</h1>
       <form onSubmit={handleSubmit(onSubmit)} className="register">
         <select {...register('Genre', { required: true })}>
           <option value="Mr">Mr</option>
           <option value="Mrs">Mme</option>
           <option value="Miss">Autre</option>
         </select>
+        <div className="flexRow">
+          <div className="flexColumn">
+            <input
+              type="text"
+              className="inputRegister"
+              placeholder="Prenom"
+              {...register('Prenom')}
+            />
+            {errors.Prenom && (
+              <p className="errorRegister">{errors.Prenom.message}</p>
+            )}
+          </div>
 
-        <input type="text" placeholder="Prenom" {...register('Prenom')} />
-        {errors.Prenom && <p className="errorLogin">{errors.Prenom.message}</p>}
+          <div className="flexColumn">
+            <input
+              type="text"
+              className="inputRegister"
+              placeholder="Nom"
+              {...register('Nom')}
+            />
+            {errors.Nom && (
+              <p className="errorRegister">{errors.Nom.message}</p>
+            )}
+          </div>
+        </div>
 
-        <input type="text" placeholder="Nom" {...register('Nom')} />
-        {errors.Nom && <p className="errorLogin">{errors.Nom.message}</p>}
+        <input
+          type="text"
+          className="inputRegister"
+          placeholder="Email"
+          {...register('Email')}
+        />
+        {errors.Email && (
+          <p className="errorRegister">{errors.Email.message}</p>
+        )}
 
-        <input type="text" placeholder="Email" {...register('Email')} />
-        {errors.Email && <p className="errorLogin">{errors.Email.message}</p>}
-
-        <input type="tel" placeholder="Téléphone" {...register('Tel')} />
-        {errors.Tel && <p className="errorLogin">{errors.Tel.message}</p>}
-
+        <input
+          type="tel"
+          className="inputRegister"
+          placeholder="Téléphone"
+          {...register('Tel')}
+        />
+        {errors.Tel && <p className="errorRegister">{errors.Tel.message}</p>}
+        <p className="Datepicker">Date de naissance</p>
         <DatePicker
           onChange={setNaissanceReg}
           value={naissanceReg}
           format="dd-MM-y"
+          clearIcon={null}
+          calendarIcon={null}
+          customStyles={{ dateInput: { borderWidth: 0 } }}
         />
 
         <input
+          className="inputRegister"
           type="password"
           placeholder="Mot de passe"
           {...register('mdp')}
         />
-        {errors.mdp && <p className="errorLogin">{errors.mdp.message}</p>}
+        {errors.mdp && <p className="errorRegister">{errors.mdp.message}</p>}
         <input
+          className="inputRegister"
           type="password"
           placeholder="Répétez le mot de passe"
           {...register('mdpVerif')}
         />
         {errors.mdpVerif && (
-          <p className="errorLogin">{errors.mdpVerif.message}</p>
+          <p className="errorRegister">{errors.mdpVerif.message}</p>
         )}
 
-        <input type="submit" placeholder="S'inscrire" onClick={registerr} />
+        <button type="submit" className="button-31" onClick={registerr}>
+          Inscription
+        </button>
       </form>
-      <p>Vous avez déjà un compte? Connetez vous !</p>
-      <button onClick={() => navigate('/login')}>Se connecter</button>
+      <p className="pRegister">Vous avez déjà un compte? Connetez vous !</p>
+      <button className="button-31" onClick={() => navigate('/login')}>
+        Se connecter
+      </button>
     </div>
   );
 }

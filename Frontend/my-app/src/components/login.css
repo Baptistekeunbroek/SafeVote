@@ -1,13 +1,4 @@
-.register {
-  display: flex;
-  margin: 0px;
-  flex-direction: column;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-}
-
-.inputRegister {
+.inputLogin {
   margin: 10px;
   background: none;
   border: none;
@@ -20,52 +11,6 @@
 
 input:focus {
   outline: none;
-}
-
-.flexRow {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-
-.flexColumn {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.errorRegister {
-  margin: 0;
-  color: red;
-  font-size: 14px;
-  margin-top: -5px;
-}
-
-.react-date-picker {
-  margin: 10px;
-  background: none;
-  border: none;
-  color: white;
-  height: 40px;
-  width: 200px;
-  border-bottom: 1px solid #6e7f80;
-}
-
-.react-date-picker__wrapper {
-  display: flex;
-  flex-grow: 1;
-  flex-shrink: 0;
-  border: none !important;
-}
-
-.Datepicker {
-  margin: 0;
-  padding: 0;
-  color: #98afb1;
-  margin-top: 5px;
-  font-size: 16px;
 }
 
 .button-31 {
@@ -102,7 +47,11 @@ input:focus {
   opacity: 0.75;
 }
 
-.h1Register {
+.width10 {
+  width: 10%;
+}
+
+.h1Login {
   font-size: 50px;
   font-weight: bold;
   margin-top: 50px;
@@ -110,7 +59,7 @@ input:focus {
   color: white;
 }
 
-.pRegister {
+.pLogin {
   color: white;
   margin-top: 50px;
 }

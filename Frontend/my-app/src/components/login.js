@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './login.css';
 
 export function Login() {
   const [usernameLog, setUsernameLog] = useState('');
@@ -47,24 +48,35 @@ export function Login() {
 
   return (
     <div className="App">
-      <h1>Connexion</h1>
-      <div className="login">
+      <h1 className="h1Login">Connexion</h1>
+      <div className="login flexColumn">
         <input
+          className="inputLogin"
           type="text"
           placeholder="Username"
           value={usernameLog}
           onChange={(e) => setUsernameLog(e.target.value)}
         />
         <input
+          className="inputLogin"
           type="password"
           placeholder="Password"
           value={passwordLog}
           onChange={(e) => setPasswordLog(e.target.value)}
         />
-        <button onClick={login}>Connexion</button>
+        <button className="button-31" onClick={login}>
+          Connexion
+        </button>
       </div>
-      <p>Vous n'avez pas encore créé de compte? faite en un maintenant !</p>
-      <button onClick={() => navigate('/register')}>Créer un compte</button>
+      <p className="pLogin">
+        Vous n'avez pas encore créé de compte? faite en un maintenant !
+      </p>
+      <button
+        className="button-31 width10"
+        onClick={() => navigate('/register')}
+      >
+        Créer un compte
+      </button>
     </div>
   );
 }

@@ -17,51 +17,6 @@ If that doesn't work, try it without @'localhost' part.
 
 ------------------------------------------------------
 
-
-
- <input
-        type="text"
-        required
-        placeholder="Nom"
-        value={nomReg}
-        onChange={(e) => setNomReg(e.target.value)}
-      />
-      <input
-        type="text"
-        required
-        placeholder="Prenom"
-        value={prenomReg}
-        onChange={(e) => setPrenomReg(e.target.value)}
-      />
-
-      <label className="naissanceLabel">Date de Naissance</label>
-      <div className="naissance">
-        <DatePicker
-          onChange={setNaissanceReg}
-          value={naissanceReg}
-          format="dd-MM-y"
-        />
-      </div>
-      <input
-        type="email"
-        required
-        placeholder="Email"
-        value={emailReg}
-        onChange={(e) => setEmailReg(e.target.value)}
-      />
-      <input
-        type="password"
-        required
-        placeholder="Mot de passe"
-        value={passwordReg}
-        onChange={(e) => setPasswordReg(e.target.value)}
-      />
-      <input
-        type="password"
-        required
-        placeholder="Confirmer mot de passe"
-        value={passwordConfirmReg}
-        onChange={(e) => setPasswordConfirmReg(e.target.value)}
-      />
-
-      <button onClick={registerr}>Register</button>
+16. Blue Grey
+Grey & Blue color shades, combinations, palettes, schemes
+#6e7f80 • #536872 • #708090 • #536878 • #36454f
