@@ -10,7 +10,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 export function Register() {
   const [naissanceReg, setNaissanceReg] = useState(null);
   const [datesend, setDatesend] = useState(null);
-  const [data, setData] = useState('');
+
   const formSchema = Yup.object().shape({
     mdp: Yup.string()
       .required('Un mot de passe est requis')
@@ -22,28 +22,36 @@ export function Register() {
     Prenom: Yup.string().required('Un prenom est requis'),
     Nom: Yup.string().required('Un nom est requis'),
     Email: Yup.string().required('Un email est requis').email('Email invalide'),
-    Tel: Yup.string()
-      .required('Le téléphone est requis')
-      .matches(/^\d{10}$/, 'Le numéro de téléphone doit contenir 10 chiffres'),
+    Tel: Yup.string().required('Le téléphone est requis'),
+    // .matches(/^\d{10}$/, 'Le numéro de téléphone doit contenir 10 chiffres'),
   });
 
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     mode: 'onTouched',
     resolver: yupResolver(formSchema),
   });
-  const onSubmit = (data) => setData(data);
+  function onSubmit(dataForm) {
+    registerr(dataForm);
+    return;
+  }
   console.log(errors);
   const navigate = useNavigate();
 
-  const registerr = async () => {
+  function registerr(data) {
     if (naissanceReg === null) {
       return;
     }
-    await axios
+    console.log(data);
+    if (!errors.length === 0) {
+      console.log('errors');
+      return;
+    }
+    axios
       .post('http://localhost:5000/register', {
         email: data.Email,
         nom: data.Nom,
@@ -58,9 +66,9 @@ export function Register() {
         setNaissanceReg(null);
         setDatesend(null);
         alert('Inscription réussie');
-        setData('');
+        reset();
       });
-  };
+  }
 
   useEffect(() => {
     if (naissanceReg != null) {
@@ -160,9 +168,7 @@ export function Register() {
           <p className="errorRegister">{errors.mdpVerif.message}</p>
         )}
 
-        <button type="submit" className="button-31" onClick={registerr}>
-          Inscription
-        </button>
+        <input type="submit" />
       </form>
       <p className="pRegister">Vous avez déjà un compte? Connetez vous !</p>
       <button className="button-31" onClick={() => navigate('/login')}>

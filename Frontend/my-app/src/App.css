@@ -9,18 +9,22 @@
 }
 
 .presentationAcceuil {
-  width: 80%;
+  margin: 0;
+  padding: 0;
   text-align: center;
+  font-size: 100px;
 }
 
 .Presentation {
   width: 40%;
-  background-color: white;
-  text-align: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   height: 93vh;
+  color: white;
+  font-family: 'Source Code Pro', monospace;
+
+  font-family: 'VT323', monospace;
 }
 .Home {
   text-align: center;
@@ -56,6 +60,9 @@ svg {
   left: 0;
   margin: 0;
   padding: 0;
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+  opacity: 0.5;
 }
 
 .videoTag {
@@ -71,7 +78,7 @@ svg {
 }
 
 .PresentationTitre {
-  font-size: 50px;
+  font-size: 150px;
   font-weight: bold;
   margin-top: 50px;
   text-align: center;

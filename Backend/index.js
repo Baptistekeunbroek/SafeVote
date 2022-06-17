@@ -57,7 +57,7 @@ initializePassport(passport, db);
 app.post('/register', (req, res) => {
   const { email, password, nom, prenom, dateDeNaissance, tel, genre } =
     req.body;
-  // console.log(email, password);
+  console.log(email, password);
   const HashedPassword = bcrypt.hashSync(password, 10);
   const query = `INSERT INTO utilisateurs (email, password, nom, prenom, dateDeNaissance, genre, tel) VALUES ('${email}', '${HashedPassword}','${nom}','${prenom}','${dateDeNaissance}','${genre}','${tel}')`;
   db.query(query, (err, result) => {
@@ -152,6 +152,21 @@ app.get('/getUser', (req, res) => {
         prenom: result[0].prenom,
         tel: result[0].tel,
         genre: result[0].genre,
+      });
+    }
+  });
+});
+
+app.get('/getcandidats', (req, res) => {
+  const query = `SELECT * FROM candidats`;
+  db.query(query, (err, result) => {
+    if (err) {
+      res.status(500).send(err);
+      console.log(err);
+    } else {
+      // console.log(result);
+      res.status(200).json({
+        candidats: result,
       });
     }
   });

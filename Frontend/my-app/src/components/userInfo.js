@@ -71,6 +71,9 @@ export function UserInfo() {
         <button className="logoutBtn" onClick={logout}>
           Logout
         </button>
+        <Link to={'/candidats'}>
+          <button className="candidatsBtn">Candidats</button>
+        </Link>
       </div>
     );
   }
