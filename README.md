@@ -53,4 +53,4 @@ Lancer le server
   npm run start
 ```
 
-Puis exécuter le script (sql)[https://github.com/Malo-LC/SafeVote/blob/main/database.sql] pour créer la base de données
+Puis exécuter le script [sql](https://github.com/Malo-LC/SafeVote/blob/main/database.sql) pour créer la base de données
