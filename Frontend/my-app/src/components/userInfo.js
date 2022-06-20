@@ -68,11 +68,11 @@ export function UserInfo() {
         </h3>
         <h3>Email : {email}</h3>
         <h3>Numéro de téléphone : {tel}</h3>
-        <button className="logoutBtn" onClick={logout}>
-          Logout
+        <button className="button-31 width10" onClick={logout}>
+          Se déconnecter
         </button>
         <Link to={'/candidats'}>
-          <button className="candidatsBtn">Candidats</button>
+          <button className="button-31">Candidats</button>
         </Link>
       </div>
     );

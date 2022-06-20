@@ -55,17 +55,42 @@ app.use(passport.authenticate('session'));
 initializePassport(passport, db);
 
 app.post('/register', (req, res) => {
-  const { email, password, nom, prenom, dateDeNaissance, tel, genre } =
-    req.body;
-  console.log(email, password);
-  const HashedPassword = bcrypt.hashSync(password, 10);
-  const query = `INSERT INTO utilisateurs (email, password, nom, prenom, dateDeNaissance, genre, tel) VALUES ('${email}', '${HashedPassword}','${nom}','${prenom}','${dateDeNaissance}','${genre}','${tel}')`;
-  db.query(query, (err, result) => {
+  let verif = false;
+  const isAlreadyInDB = 'SELECT * FROM utilisateurs';
+  db.query(isAlreadyInDB, (err, result) => {
     if (err) {
-      res.status(500).send(err);
       console.log(err);
     } else {
-      res.send(result);
+      console.log(result);
+      for (let i = 0; i < result.length; i++) {
+        console.log(result[i].email);
+        if (result[i].email === req.body.email) {
+          res.send('Email');
+          verif = true;
+          break;
+        }
+        if (result[i].tel === req.body.tel) {
+          verif = true;
+          res.send('Tel');
+          break;
+        }
+      }
+      console.log(verif);
+      if (!verif) {
+        const { email, password, nom, prenom, dateDeNaissance, tel, genre } =
+          req.body;
+        console.log(email, password);
+        const HashedPassword = bcrypt.hashSync(password, 10);
+        const query = `INSERT INTO utilisateurs (email, password, nom, prenom, dateDeNaissance, genre, tel) VALUES ('${email}', '${HashedPassword}','${nom}','${prenom}','${dateDeNaissance}','${genre}','${tel}')`;
+        db.query(query, (err, result) => {
+          if (err) {
+            res.status(500).send(err);
+            console.log(err);
+          } else {
+            res.send('Inscription réussie');
+          }
+        });
+      }
     }
   });
 });
@@ -77,35 +102,34 @@ app.get('/flash', function (req, res) {
 });
 
 app.post('/login', (req, res, next) => {
-  passport.authenticate(
-    'local',
-    {
-      successRedirect: '/',
-      failureRedirect: '/login',
-      failureMessage: 'Invalid username or password.',
-    },
-    (err, user) => {
-      if (err) {
-        console.log(err);
-        return res.sendStatus(500);
-      }
-      if (!user) console.log('No User Exists');
-      else {
-        req.login(user, (err) => {
-          if (err) {
-            console.log(err);
-            return res.sendStatus(500);
-          } else {
-            // console.log(req.session);
-
-            res.send(true);
-            next();
-            return;
-          }
-        });
-      }
+  passport.authenticate('local', {}, (err, user) => {
+    if (err) {
+      console.log(err);
+      res.sendStatus(500);
+      return;
     }
-  )(req, res, next);
+    if (!user) {
+      console.log('No User Exists');
+      res.json({
+        message: false,
+      });
+      return;
+    } else {
+      req.login(user, (err) => {
+        if (err) {
+          console.log(err);
+          res.sendStatus(500);
+          return;
+        } else {
+          // console.log(req.session);
+
+          res.send(true);
+          next();
+          return;
+        }
+      });
+    }
+  })(req, res, next);
 });
 
 app.get('/', (req, res) => {
@@ -167,6 +191,21 @@ app.get('/getcandidats', (req, res) => {
       // console.log(result);
       res.status(200).json({
         candidats: result,
+      });
+    }
+  });
+});
+
+app.get('/checkVote', (req, res) => {
+  const query = `SELECT * FROM vote WHERE idUser = '${req.user.id}'`;
+  db.query(query, (err, result) => {
+    if (err) {
+      res.status(500).send(err);
+      console.log(err);
+    } else {
+      // console.log(result);
+      res.status(200).json({
+        vote: result,
       });
     }
   });

@@ -65,7 +65,15 @@ export function Register() {
         console.log({ res: res });
         setNaissanceReg(null);
         setDatesend(null);
-        alert('Inscription réussie');
+        if (res.data === 'Email') {
+          alert('Email déjà utilisé');
+        }
+        if (res.data === 'Tel') {
+          alert('Numéro de téléphone déjà utilisé');
+        }
+        if (res.data === 'Inscription réussie') {
+          alert('Inscription réussie');
+        }
         reset();
       });
   }
@@ -93,12 +101,15 @@ export function Register() {
     <div className="register">
       <h1 className="h1Register">Créer un compte</h1>
       <form onSubmit={handleSubmit(onSubmit)} className="register">
-        <select {...register('Genre', { required: true })}>
-          <option value="Mr">Mr</option>
-          <option value="Mrs">Mme</option>
-          <option value="Miss">Autre</option>
-        </select>
         <div className="flexRow">
+          <select
+            className="button-31 width20"
+            {...register('Genre', { required: true })}
+          >
+            <option value="Mr">Mr</option>
+            <option value="Mrs">Mme</option>
+            <option value="Miss">Autre</option>
+          </select>
           <div className="flexColumn">
             <input
               type="text"
@@ -168,7 +179,9 @@ export function Register() {
           <p className="errorRegister">{errors.mdpVerif.message}</p>
         )}
 
-        <input type="submit" />
+        <button className="button-31" type="Submit">
+          Inscription
+        </button>
       </form>
       <p className="pRegister">Vous avez déjà un compte? Connetez vous !</p>
       <button className="button-31" onClick={() => navigate('/login')}>

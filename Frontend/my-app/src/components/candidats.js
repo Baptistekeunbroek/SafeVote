@@ -1,8 +1,9 @@
 import axios from 'axios';
 import { useState, useEffect, useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useTable } from 'react-table';
 import './candidats.css';
+import { Voter } from './voter';
 
 export function Candidats() {
   const [candidats, setCandidats] = useState([]);
@@ -45,12 +46,12 @@ export function Candidats() {
         accessor: 'idCandidat',
       },
       {
-        Header: 'Nom',
-        accessor: 'nom',
+        Header: 'Prenom',
+        accessor: 'prenomC',
       },
       {
-        Header: 'Prenom',
-        accessor: 'prenom',
+        Header: 'Nom',
+        accessor: 'nomC',
       },
       {
         Header: 'Parti politique',
@@ -106,6 +107,7 @@ export function Candidats() {
       <h1 className="h1Candidats">Liste des candidats</h1>
 
       <Table columns={columns} data={candidats} />
+      <Voter candidats={candidats} />
     </div>
   );
 }

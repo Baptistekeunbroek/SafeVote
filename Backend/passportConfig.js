@@ -39,15 +39,6 @@ function initializePassport(passport, connection) {
   passport.deserializeUser(function (user, done) {
     console.log('deserializeUser');
     done(null, user);
-    // connection.query(
-    //   'select * from utilisateurs where id = ' + id,
-    //   function (err, rows) {
-    //     // console.log(rows[0]);
-    //     if (err) throw err;
-
-    //     done(null,user);
-    //   }
-    // );
   });
 }
 

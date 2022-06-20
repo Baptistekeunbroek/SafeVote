@@ -37,6 +37,9 @@ export function Login() {
       )
       .then((res) => {
         console.log({ res: res });
+        if (res.data.message === false) {
+          alert('Email ou mot de passe incorrect');
+        }
         setUsernameLog('');
         setPasswordLog('');
 
@@ -52,8 +55,8 @@ export function Login() {
       <div className="login flexColumn">
         <input
           className="inputLogin"
-          type="text"
-          placeholder="Username"
+          type="email"
+          placeholder="Email"
           value={usernameLog}
           onChange={(e) => setUsernameLog(e.target.value)}
         />
