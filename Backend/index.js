@@ -211,6 +211,21 @@ app.get('/checkVote', (req, res) => {
   });
 });
 
+app.post('/vote', (req, res) => {
+  const query = `INSERT INTO vote (idUser, idCandidat) VALUES ('${req.user.id}', '${req.body.idCandidat}')`;
+  db.query(query, (err, result) => {
+    if (err) {
+      res.status(500).send(err);
+      console.log(err);
+    } else {
+      // console.log(result);
+      res.status(200).json({
+        vote: result,
+      });
+    }
+  });
+});
+
 app.listen(5000, () => {
   console.log('Server is running on port 5000');
 });
