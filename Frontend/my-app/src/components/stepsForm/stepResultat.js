@@ -1,5 +1,9 @@
 export function StepResultat() {
-  return <div className="multiStep"></div>;
+  return (
+    <div className="StepResultat">
+      <p>Test</p>
+    </div>
+  );
 }
 
 export default StepResultat;

@@ -24,6 +24,7 @@ CREATE TABLE utilisateurs(
     PRIMARY KEY(id)
 );
 
+drop table if exists vote;
 CREATE TABLE vote(idUser INT, idCandidat INT);
 
 INSERT INTO
