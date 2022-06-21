@@ -10,7 +10,6 @@ export function MultiStepVote({ candidats }) {
 
   const changeState = (e) => {
     setStepActuel(e);
-    console.log(stepActuel);
   };
 
   const steps = [

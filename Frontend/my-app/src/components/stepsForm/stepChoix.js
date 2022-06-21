@@ -16,7 +16,6 @@ export function StepChoix({ candidats, changeState }) {
   });
   console.log(errors);
   function onSubmit(dataForm) {
-    console.log(dataForm);
     changeState(1);
   }
 

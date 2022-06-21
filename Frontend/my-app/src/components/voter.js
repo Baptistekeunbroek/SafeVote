@@ -4,7 +4,6 @@ import { MultiStepVote } from './multiStep';
 
 export function Voter({ candidats }) {
   const [vote, setVote] = useState('');
-  const [choixVote, setChoixVote] = useState(1);
 
   useEffect(() => {
     axios
@@ -18,23 +17,6 @@ export function Voter({ candidats }) {
         console.log(error);
       });
   }, []);
-
-  function voter() {
-    axios
-      .post(
-        'http://localhost:5000/vote',
-        {
-          idCandidat: choixVote,
-        },
-        { withCredentials: true }
-      )
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
 
   if (candidats.length === 0) {
     return (

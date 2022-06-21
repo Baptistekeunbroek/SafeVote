@@ -17,7 +17,6 @@ export function UserInfo() {
         withCredentials: true,
       })
       .then((res) => {
-        console.log(res.data.auth);
         if (!res.data.auth) {
           navigate('/login');
         }
@@ -25,7 +24,7 @@ export function UserInfo() {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     axios
@@ -33,7 +32,6 @@ export function UserInfo() {
         withCredentials: true,
       })
       .then((res) => {
-        console.log(res.data);
         setEmail(res.data.email);
         setNom(res.data.nom);
         setPrenom(res.data.prenom);
@@ -48,9 +46,7 @@ export function UserInfo() {
   const logout = () => {
     axios
       .post('http://localhost:5000/logout', {}, { withCredentials: true })
-      .then((res) => {
-        console.log({ res: res });
-      });
+      .then((res) => {});
     navigate('/login');
   };
   if (email === '' || nom === '' || prenom === '') {

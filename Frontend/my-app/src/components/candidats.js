@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useState, useEffect, useMemo } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useTable } from 'react-table';
 import './candidats.css';
 import { Voter } from './voter';
@@ -15,7 +15,6 @@ export function Candidats() {
         withCredentials: true,
       })
       .then((res) => {
-        console.log(res.data.auth);
         if (!res.data.auth) {
           navigate('/login');
         }
@@ -23,7 +22,7 @@ export function Candidats() {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     axios
@@ -32,7 +31,6 @@ export function Candidats() {
       })
       .then((res) => {
         setCandidats(res.data.candidats);
-        console.log(res.data.candidats);
       })
       .catch((error) => {
         console.log(error);
@@ -61,18 +59,13 @@ export function Candidats() {
     []
   );
 
-  //   const tableInstance = useTable({ columns, data });
-
   function Table({ columns, data }) {
-    // Use the state and functions returned from useTable to build your UI
     const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
       useTable({
         columns,
         data,
       });
 
-    // Render the UI for your table
-    console.log(data);
     return (
       <table {...getTableProps()}>
         <thead>
