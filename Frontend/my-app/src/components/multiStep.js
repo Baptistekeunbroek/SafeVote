@@ -3,6 +3,7 @@ import { StepChoix } from './stepsForm/stepChoix';
 import { StepConfirmation } from './stepsForm/stepConfirmation';
 import { StepResultat } from './stepsForm/stepResultat';
 import { StepVote } from './stepsForm/stepVote';
+import { Progression } from './stepsForm/progression';
 import axios from 'axios';
 
 export function MultiStepVote({ candidats }) {
@@ -57,6 +58,7 @@ export function MultiStepVote({ candidats }) {
   }
   return (
     <div className="multiStep">
+      <Progression step={stepActuel} />
       <div className="multiStepSteps">{steps[stepActuel].component}</div>
     </div>
   );
