@@ -1,7 +1,8 @@
 export function StepResultat() {
   return (
     <div className="StepResultat">
-      <p>Test</p>
+      <h1>Vous avez voté ! </h1>
+      <p>Votre vote : </p>
     </div>
   );
 }

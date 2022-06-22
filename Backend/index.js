@@ -7,7 +7,6 @@ const session = require('express-session');
 const initializePassport = require('./passportConfig');
 const MySQLStore = require('express-mysql-session')(session);
 const path = require('path');
-const flash = require('connect-flash');
 const app = express();
 const bcrypt = require('bcrypt');
 
@@ -45,7 +44,6 @@ app.use(
     store: sessionStore,
   })
 );
-app.use(flash());
 app.use(passport.initialize());
 
 app.use(passport.session());
