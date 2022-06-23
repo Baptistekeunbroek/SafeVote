@@ -5,7 +5,9 @@ import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import { UserInfo } from './components/userInfo';
 import sample from './misc/videoBack.mp4';
 import { Candidats } from './components/candidats';
-function BG() {}
+import logo from './safevotelogo.png';
+
+function BG() { }
 
 function Home() {
   return (
@@ -26,46 +28,53 @@ function Home() {
 function NavigationBar() {
   return (
     <div className="NavBar">
-      <div className="acceuil">
-        <Link to={'/'}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="icon icon-tabler icon-tabler-home"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            strokeWidth="2"
-            stroke="currentColor"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-            <polyline points="5 12 3 12 12 3 21 12 19 12"></polyline>
-            <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7"></path>
-            <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"></path>
-          </svg>
-        </Link>
+      <div className='logos'>
+        <img src={logo} alt="logo" />
       </div>
-      <div className="connexion">
-        <Link to={'/login'}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="icon icon-tabler icon-tabler-user"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            strokeWidth="2"
-            stroke="currentColor"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-            <circle cx="12" cy="7" r="4"></circle>
-            <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
-          </svg>
-        </Link>
+      <div className='navigation'>
+        <div className="acceuil">
+
+          <Link to={'/'}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="icon icon-tabler icon-tabler-home"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              strokeWidth="2"
+              stroke="currentColor"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <polyline points="5 12 3 12 12 3 21 12 19 12"></polyline>
+              <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7"></path>
+              <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"></path>
+            </svg>
+          </Link>
+        </div>
+        <div className='separator'></div>
+        <div className="connexion">
+          <Link to={'/login'}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="icon icon-tabler icon-tabler-user"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              strokeWidth="2"
+              stroke="currentColor"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+              <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
+            </svg>
+          </Link>
+        </div>
       </div>
     </div>
   );
