@@ -14,7 +14,6 @@ export function Login() {
         withCredentials: true,
       })
       .then((res) => {
-        console.log(res.data.auth);
         if (res.data.auth) {
           navigate('/userInfo');
         }
@@ -22,7 +21,7 @@ export function Login() {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
   // const [data, setData] = useState('');
 
   const login = () => {
@@ -36,7 +35,6 @@ export function Login() {
         { withCredentials: true }
       )
       .then((res) => {
-        console.log({ res: res });
         if (res.data.message === false) {
           alert('Email ou mot de passe incorrect');
         }

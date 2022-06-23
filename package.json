@@ -1,0 +1,25 @@
+{
+  "name": "safevote",
+  "version": "1.0.0",
+  "description": "Projet Mastercamp :\r Création d'un site web de voe en ligne sécurisé et fiable.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "concurrently \"cd ./Backend && npm start\" \"cd ./Frontend/my-app && npm start\"",
+    "installDependencies": "concurrently \"cd ./Backend && npm install\" \"cd ./Frontend/my-app && npm install\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Malo-LC/SafeVote.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Malo-LC/SafeVote/issues"
+  },
+  "homepage": "https://github.com/Malo-LC/SafeVote#readme",
+  "dependencies": {
+    "concurrently": "^7.2.2"
+  }
+}

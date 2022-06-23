@@ -46,9 +46,7 @@ export function Register() {
     if (naissanceReg === null) {
       return;
     }
-    console.log(data);
     if (!errors.length === 0) {
-      console.log('errors');
       return;
     }
     axios
@@ -62,7 +60,6 @@ export function Register() {
         genre: data.Genre,
       })
       .then((res) => {
-        console.log({ res: res });
         setNaissanceReg(null);
         setDatesend(null);
         if (res.data === 'Email') {
@@ -80,13 +77,6 @@ export function Register() {
 
   useEffect(() => {
     if (naissanceReg != null) {
-      console.log(
-        naissanceReg.getDate() +
-          '-' +
-          (naissanceReg.getMonth() * 1 + 1) +
-          '-' +
-          naissanceReg.getFullYear()
-      );
       setDatesend(
         naissanceReg.getDate() +
           '-' +

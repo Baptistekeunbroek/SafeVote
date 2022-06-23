@@ -7,7 +7,6 @@ const session = require('express-session');
 const initializePassport = require('./passportConfig');
 const MySQLStore = require('express-mysql-session')(session);
 const path = require('path');
-const flash = require('connect-flash');
 const app = express();
 const bcrypt = require('bcrypt');
 
@@ -45,7 +44,6 @@ app.use(
     store: sessionStore,
   })
 );
-app.use(flash());
 app.use(passport.initialize());
 
 app.use(passport.session());
@@ -61,9 +59,7 @@ app.post('/register', (req, res) => {
     if (err) {
       console.log(err);
     } else {
-      console.log(result);
       for (let i = 0; i < result.length; i++) {
-        console.log(result[i].email);
         if (result[i].email === req.body.email) {
           res.send('Email');
           verif = true;
@@ -75,11 +71,9 @@ app.post('/register', (req, res) => {
           break;
         }
       }
-      console.log(verif);
       if (!verif) {
         const { email, password, nom, prenom, dateDeNaissance, tel, genre } =
           req.body;
-        console.log(email, password);
         const HashedPassword = bcrypt.hashSync(password, 10);
         const query = `INSERT INTO utilisateurs (email, password, nom, prenom, dateDeNaissance, genre, tel) VALUES ('${email}', '${HashedPassword}','${nom}','${prenom}','${dateDeNaissance}','${genre}','${tel}')`;
         db.query(query, (err, result) => {
@@ -109,7 +103,6 @@ app.post('/login', (req, res, next) => {
       return;
     }
     if (!user) {
-      console.log('No User Exists');
       res.json({
         message: false,
       });
@@ -121,8 +114,6 @@ app.post('/login', (req, res, next) => {
           res.sendStatus(500);
           return;
         } else {
-          // console.log(req.session);
-
           res.send(true);
           next();
           return;
@@ -137,12 +128,10 @@ app.get('/', (req, res) => {
 });
 
 app.post('/logout', function (req, res, next) {
-  // console.log(req.session);
   req.logout(function (err) {
     if (err) {
       return next(err);
     }
-    console.log('Logged out');
     res.send('logout');
   });
 });
@@ -150,7 +139,6 @@ app.post('/logout', function (req, res, next) {
 app.get('/checkAuthentication', (req, res) => {
   const authenticated = req.isAuthenticated();
 
-  console.log(authenticated);
   if (authenticated) {
     res.status(200).json({
       auth: true,
@@ -169,7 +157,6 @@ app.get('/getUser', (req, res) => {
       res.status(500).send(err);
       console.log(err);
     } else {
-      // console.log(result);
       res.status(200).json({
         email: result[0].email,
         nom: result[0].nom,
@@ -188,7 +175,6 @@ app.get('/getcandidats', (req, res) => {
       res.status(500).send(err);
       console.log(err);
     } else {
-      // console.log(result);
       res.status(200).json({
         candidats: result,
       });
@@ -203,7 +189,6 @@ app.get('/checkVote', (req, res) => {
       res.status(500).send(err);
       console.log(err);
     } else {
-      // console.log(result);
       res.status(200).json({
         vote: result,
       });
@@ -218,7 +203,6 @@ app.post('/vote', (req, res) => {
       res.status(500).send(err);
       console.log(err);
     } else {
-      // console.log(result);
       res.status(200).json({
         vote: result,
       });

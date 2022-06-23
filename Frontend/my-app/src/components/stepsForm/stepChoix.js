@@ -2,7 +2,7 @@ import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 
-export function StepChoix({ candidats, changeState }) {
+export function StepChoix({ candidats, changeState, changeVote }) {
   const formSchema = Yup.object().shape({
     Vote: Yup.string().required('Le vote est requis'),
   });
@@ -16,7 +16,7 @@ export function StepChoix({ candidats, changeState }) {
   });
   console.log(errors);
   function onSubmit(dataForm) {
-    console.log(dataForm);
+    changeVote(dataForm.Vote);
     changeState(1);
   }
 
@@ -25,7 +25,7 @@ export function StepChoix({ candidats, changeState }) {
   }
 
   return (
-    <div className="multiStep">
+    <div className="StepChoix">
       <p>Pour qui voulez vous voter ?</p>
       <form onSubmit={handleSubmit(onSubmit)}>
         <select
