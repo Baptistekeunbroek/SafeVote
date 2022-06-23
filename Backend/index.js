@@ -1,4 +1,3 @@
-require('dotenv').config();
 const express = require('express');
 const mysql = require('mysql');
 const cors = require('cors');
@@ -9,7 +8,11 @@ const MySQLStore = require('express-mysql-session')(session);
 const path = require('path');
 const app = express();
 const bcrypt = require('bcrypt');
+const nodemailer = require('nodemailer');
+const transporter = require('./config');
+const { mainModule } = require('process');
 
+// Inintialisation de la bdd
 let options = {
   host: 'localhost',
   user: 'root',
@@ -17,12 +20,11 @@ let options = {
   password: 'password',
   database: 'safevote',
 };
-
 const db = mysql.createConnection(options);
 let sessionStore = new MySQLStore({}, db);
 
+// Initialisation de passport et de la session
 app.use(express.json());
-
 app.use(
   cors({
     origin: 'http://localhost:3000',
@@ -31,7 +33,6 @@ app.use(
   })
 );
 app.use(express.static(path.join(__dirname, 'public')));
-
 app.use(
   session({
     secret: 'secret',
@@ -45,11 +46,8 @@ app.use(
   })
 );
 app.use(passport.initialize());
-
 app.use(passport.session());
-
 app.use(passport.authenticate('session'));
-
 initializePassport(passport, db);
 
 app.post('/register', (req, res) => {
@@ -207,6 +205,25 @@ app.post('/vote', (req, res) => {
         vote: result,
       });
     }
+  });
+});
+
+app.post('/sendConfirmationEmail', async (req, res) => {
+  const vote = req.body.vote;
+  const email = req.user.email;
+  const nom = req.user.nom;
+  const prenom = req.user.prenom;
+  const mail = await transporter.sendMail({
+    from: '"SafeVote" <safevoteL3@outlook.com>', // sender address
+    to: email, // list of receivers
+    subject: `Récipissé de votre vote ${nom} ${prenom}`, // Subject line
+    text: 'Vote', // plain text body
+    html: `<h1>Bonjour</h1> <p>Voici votre vote : ${vote.prenomC} ${vote.nomC}`, // html body
+  });
+  console.log('Message sent: %s', mail.messageId);
+  res.status(200).json({
+    vote,
+    email,
   });
 });
 

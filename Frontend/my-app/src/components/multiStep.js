@@ -51,7 +51,7 @@ export function MultiStepVote({ candidats }) {
       name: 'Step 3',
       component: <StepVote changeState={changeState} vote={vote} />,
     },
-    { name: 'Step 4', component: <StepResultat /> },
+    { name: 'Step 4', component: <StepResultat vote={vote} /> },
   ];
   if (candidats.length === 0) {
     return <div className="multiStep"></div>;

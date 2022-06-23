@@ -1,10 +1,24 @@
-export function StepResultat() {
+import axios from 'axios';
+import { useEffect } from 'react';
+export function StepResultat({ vote }) {
+  useEffect(() => {
+    console.log(vote);
+    if (vote) {
+      axios
+        .post(
+          'http://localhost:5000/sendConfirmationEmail',
+          { vote: vote },
+          { withCredentials: true }
+        )
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, [vote]);
   return (
     <div className="StepResultat">
       <h1>Vous avez voté ! </h1>
-      <p>Votre vote : </p>
+      <p>Vous aller recevoir votre confirmation par email ! </p>
     </div>
   );
 }
-
-export default StepResultat;
