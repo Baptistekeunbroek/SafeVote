@@ -5,6 +5,7 @@ import { Login } from './components/login';
 import { UserInfo } from './components/userInfo';
 import sample from './misc/videoBack.mp4';
 import { Candidats } from './components/candidats';
+import { About } from './components/about';
 import logo from './safevotelogo.png';
 import './App.css';
 
@@ -82,6 +83,11 @@ function Footer() {
   return (
     <div className="footer">
       <p>This is some content in sticky footer</p>
+      <Link to="/about">
+        <button type="button" className="button-31">
+          A propos
+        </button>
+      </Link>
     </div>
   );
 }
@@ -97,6 +103,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/userinfo" element={<UserInfo />} />
           <Route path="/candidats" element={<Candidats />} />
+          <Route path="/about" element={<About />} />
         </Routes>
         <Footer />
       </Router>

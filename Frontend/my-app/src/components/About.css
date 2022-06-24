@@ -1,0 +1,9 @@
+.About {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.MuiBox-root {
+  margin: 20px;
+}
