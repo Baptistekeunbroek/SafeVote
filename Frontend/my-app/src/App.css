@@ -32,6 +32,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-height: 90vh;
 }
 
 .NavBar {
@@ -40,7 +41,7 @@
   justify-content: space-between;
   align-items: center;
   background-color: #006d77;
-  height: 12vh;
+  height: 10vh;
   margin: 0px;
   top: 0;
   width: 100%;
@@ -57,13 +58,13 @@
   float: left;
   margin: 0;
   float: left;
-  height: 20vh;
+  height: 16vh;
   width: auto;
 }
 
 .separator {
   border-left: 1vh solid white;
-  height: 12vh;
+  height: 10vh;
   margin-left: 5vh;
   margin-right: 2vh;
 }
@@ -115,11 +116,10 @@ svg {
 }
 
 .footer {
-  margin-top: 1rem;
-  padding: 1rem;
-  background-color: #006d77;
+  position: absolute;
+  right: 0;
   bottom: 0;
   left: 0;
-  width: 100%;
-  clear: both;
+  text-align: center;
+  background-color: #006d77;
 }
