@@ -40,7 +40,7 @@
   justify-content: space-between;
   align-items: center;
   background-color: #006D77;
-  height: 12vh;
+  height: 10vh;
   margin: 0px;
   top: 0;
   width: 100%;
@@ -59,14 +59,14 @@
   float: left;
   margin: 0;
   float: left;
-  height: 20vh;
+  height: 18vh;
   width: auto;
 }
 
 .separator {
 
   border-left: 1vh solid white;
-  height: 12vh;
+  height: 10vh;
   margin-left: 5vh;
   margin-right: 2vh;
 }
@@ -124,7 +124,6 @@ svg {
   right: 0;
   bottom: 0;
   left: 0;
-  padding: 1rem;
   text-align: center;
   background-color: #006D77;
 }
