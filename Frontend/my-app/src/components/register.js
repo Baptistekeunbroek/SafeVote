@@ -166,19 +166,19 @@ export function Register() {
             <p className="errorRegister">{errors.mdpVerif.message}</p>
           )}
 
-        <button className="button-31" type="submit">
-          Inscription
+          <button className="button-31" type="submit">
+            Inscription
+          </button>
+        </form>
+        <p className="pRegister">Vous avez déjà un compte? Connectez vous !</p>
+        <button
+          type="button"
+          className="button-31"
+          onClick={() => navigate('/login')}
+        >
+          Se connecter
         </button>
-      </form>
-      <p className="pRegister">Vous avez déjà un compte? Connectez vous !</p>
-      <button
-        type="button"
-        className="button-31"
-        onClick={() => navigate('/login')}
-      >
-        Se connecter
-      </button>
-    </div>
+      </div>
     </div>
   );
 }

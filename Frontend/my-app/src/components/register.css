@@ -1,16 +1,14 @@
-.regis{
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  border-radius: 30px;
-  background: #006D77;
-  height: 500px;
-  overflow: auto;
+.regis {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
 }
 
-
 .register {
+  margin: 20px;
+  background: #006d77;
+  border-radius: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -79,14 +77,14 @@ input:focus {
 }
 
 .button-31 {
-  background-color: #EDF6F9;
+  background-color: #edf6f9;
   color: black;
   border: none;
   padding: 14px 28px;
   font-size: 16px;
   cursor: pointer;
   display: inline-block;
-  width:auto;
+  width: auto;
   margin-bottom: 10px;
 }
 
@@ -106,4 +104,3 @@ input:focus {
 .pRegister {
   color: white;
 }
-

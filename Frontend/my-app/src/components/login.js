@@ -47,10 +47,8 @@ export function Login() {
   };
 
   return (
-    
     <div className="App">
       <div className="log">
-      
         <h1 className="h1Login">Connexion</h1>
         <div className="login flexColumn">
           <input
@@ -67,7 +65,7 @@ export function Login() {
             value={passwordLog}
             onChange={(e) => setPasswordLog(e.target.value)}
           />
-          <button className="button-31" onClick={login}>
+          <button type="button" className="button-31" onClick={login}>
             Connexion
           </button>
         </div>
@@ -75,6 +73,7 @@ export function Login() {
           Vous n'avez pas encore créé de compte? faite en un maintenant !
         </p>
         <button
+          type="button"
           className="button-31"
           onClick={() => navigate('/register')}
         >
