@@ -49,37 +49,39 @@ export function Login() {
   return (
     <div className="App">
       <div className="log">
-        <h1 className="h1Login">Connexion</h1>
-        <div className="login flexColumn">
-          <input
-            className="inputLogin"
-            type="email"
-            placeholder="Email"
-            value={usernameLog}
-            onChange={(e) => setUsernameLog(e.target.value)}
-          />
-          <input
-            className="inputLogin"
-            type="password"
-            placeholder="Password"
-            value={passwordLog}
-            onChange={(e) => setPasswordLog(e.target.value)}
-          />
-          <button type="button" className="button-31" onClick={login}>
-            Connexion
+        <div className="logg">
+          <h1 className="h1Login">Connexion</h1>
+          <div className="login flexColumn">
+            <input
+              className="inputLogin"
+              type="email"
+              placeholder="Email"
+              value={usernameLog}
+              onChange={(e) => setUsernameLog(e.target.value)}
+            />
+            <input
+              className="inputLogin"
+              type="password"
+              placeholder="Password"
+              value={passwordLog}
+              onChange={(e) => setPasswordLog(e.target.value)}
+            />
+            <button type="button" className="button-31" onClick={login}>
+              Connexion
+            </button>
+          </div>
+          <p className="pLogin">
+            Vous n'avez pas encore créé de compte? faite en un maintenant !
+          </p>
+          <button
+            type="button"
+            className="button-31"
+            onClick={() => navigate('/register')}
+          >
+            Créer un compte
           </button>
+          </div>
         </div>
-        <p className="pLogin">
-          Vous n'avez pas encore créé de compte? faite en un maintenant !
-        </p>
-        <button
-          type="button"
-          className="button-31"
-          onClick={() => navigate('/register')}
-        >
-          Créer un compte
-        </button>
       </div>
-    </div>
-  );
+      );
 }

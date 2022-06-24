@@ -120,13 +120,12 @@ svg {
 }
 
 .footer{
-  margin-top: 1rem;
-  padding: 1rem;
-  background-color: #006D77;
-  position: fixed;
+  position: absolute;
+  right: 0;
   bottom: 0;
   left: 0;
-  width: 100%;
-  clear:both;
+  padding: 1rem;
+  text-align: center;
+  background-color: #006D77;
 }
 

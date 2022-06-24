@@ -52,13 +52,22 @@ input:focus {
 }
 
 .log {
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  border-radius: 30px;
-  background: #006D77;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  margin-bottom: 500px;
 
+}
+
+.logg{
+  margin: 20px;
+  background: #006d77;
+  border-radius: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 
