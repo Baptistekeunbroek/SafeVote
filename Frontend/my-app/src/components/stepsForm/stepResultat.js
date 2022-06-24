@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { useEffect } from 'react';
+import { useEffect, React } from 'react';
+
 export function StepResultat({ vote }) {
   useEffect(() => {
     console.log(vote);

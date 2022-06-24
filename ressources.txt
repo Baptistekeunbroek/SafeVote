@@ -1,4 +1,4 @@
-// https://stackoverflow.com/questions/50093144/mysql-8-0-client-does-not-support-authentication-protocol-requested-by-server
+https://stackoverflow.com/questions/50093144/mysql-8-0-client-does-not-support-authentication-protocol-requested-by-server
 
 Execute the following query in MYSQL Workbench
 
@@ -17,6 +17,3 @@ If that doesn't work, try it without @'localhost' part.
 
 ------------------------------------------------------
 
-16. Blue Grey
-Grey & Blue color shades, combinations, palettes, schemes
-#6e7f80 • #536872 • #708090 • #536878 • #36454f

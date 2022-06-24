@@ -1,7 +1,6 @@
 import axios from 'axios';
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect, React } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 
 export function UserInfo() {
   const navigate = useNavigate();
@@ -24,7 +23,7 @@ export function UserInfo() {
       .catch((error) => {
         console.log(error);
       });
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, []); // eslint-disable-line
 
   useEffect(() => {
     axios
@@ -44,9 +43,8 @@ export function UserInfo() {
   }, []);
 
   const logout = () => {
-    axios
-      .post('http://localhost:5000/logout', {}, { withCredentials: true })
-      .then((res) => {});
+    axios.post('http://localhost:5000/logout', {}, { withCredentials: true });
+
     navigate('/login');
   };
   if (email === '' || nom === '' || prenom === '') {
@@ -55,22 +53,23 @@ export function UserInfo() {
         <p>LOADING</p>
       </div>
     );
-  } else {
-    return (
-      <div className="App">
-        <h1 className="connected">Vous êtes connecté à votre compte</h1>
-        <h3>
-          Bonjour {genre} {prenom} {nom}{' '}
-        </h3>
-        <h3>Email : {email}</h3>
-        <h3>Numéro de téléphone : {tel}</h3>
-        <button className="button-31 width10" onClick={logout}>
-          Se déconnecter
-        </button>
-        <Link to={'/candidats'}>
-          <button className="button-31">Candidats</button>
-        </Link>
-      </div>
-    );
   }
+  return (
+    <div className="App">
+      <h1 className="connected">Vous êtes connecté à votre compte</h1>
+      <h3>
+        Bonjour {genre} {prenom} {nom}{' '}
+      </h3>
+      <h3>Email : {email}</h3>
+      <h3>Numéro de téléphone : {tel}</h3>
+      <button type="button" className="button-31 width10" onClick={logout}>
+        Se déconnecter
+      </button>
+      <Link to="/candidats">
+        <button type="button" className="button-31">
+          Candidats
+        </button>
+      </Link>
+    </div>
+  );
 }

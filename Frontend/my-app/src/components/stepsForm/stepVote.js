@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { useEffect } from 'react';
+import { useEffect, React } from 'react';
+
 export function StepVote({ changeState, vote }) {
   useEffect(() => {
     axios
@@ -10,18 +11,21 @@ export function StepVote({ changeState, vote }) {
         },
         { withCredentials: true }
       )
-      .then((res) => {})
       .catch((error) => {
         console.log(error);
       });
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, []); // eslint-disable-line
   return (
     <div className="StepVote">
       <h1>
         Vous avez voté pour {vote.prenomC}
         {vote.nomC}
       </h1>
-      <button className="button-31" onClick={() => changeState(3)}>
+      <button
+        type="button"
+        className="button-31"
+        onClick={() => changeState(3)}
+      >
         Récépissé
       </button>
     </div>

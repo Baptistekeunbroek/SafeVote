@@ -1,3 +1,4 @@
+import { React } from 'react';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
@@ -21,7 +22,7 @@ export function StepChoix({ candidats, changeState, changeVote }) {
   }
 
   if (candidats.length === 0) {
-    return <div className="multiStep"></div>;
+    return <div className="multiStep" />;
   }
 
   return (
@@ -38,7 +39,7 @@ export function StepChoix({ candidats, changeState, changeVote }) {
             </option>
           ))}
         </select>
-        <button className="button-31" type="Submit">
+        <button className="button-31" type="submit">
           Voter
         </button>
       </form>

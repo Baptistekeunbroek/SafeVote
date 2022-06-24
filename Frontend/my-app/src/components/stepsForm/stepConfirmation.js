@@ -1,3 +1,5 @@
+import { React } from 'react';
+
 export function StepConfirmation({ changeState, vote }) {
   return (
     <div className="StepConfirmation">
@@ -6,10 +8,18 @@ export function StepConfirmation({ changeState, vote }) {
         <p className="mr10">{vote.prenomC} </p>
         <p>{vote.nomC}</p>
       </div>
-      <button className="button-31" onClick={() => changeState(0)}>
+      <button
+        type="button"
+        className="button-31"
+        onClick={() => changeState(0)}
+      >
         Changer de vote
       </button>
-      <button className="button-31" onClick={() => changeState(2)}>
+      <button
+        type="button"
+        className="button-31"
+        onClick={() => changeState(2)}
+      >
         Confirmer
       </button>
     </div>

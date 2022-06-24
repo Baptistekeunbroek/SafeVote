@@ -213,6 +213,7 @@ app.post('/sendConfirmationEmail', async (req, res) => {
   const email = req.user.email;
   const nom = req.user.nom;
   const prenom = req.user.prenom;
+  console.log(email);
   const mail = await transporter.sendMail({
     from: '"SafeVote" <safevoteL3@outlook.com>', // sender address
     to: email, // list of receivers

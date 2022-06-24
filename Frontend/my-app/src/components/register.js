@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, React } from 'react';
 import './register.css';
 import DatePicker from 'react-date-picker';
 import { useNavigate } from 'react-router-dom';
@@ -35,13 +35,6 @@ export function Register() {
     mode: 'onTouched',
     resolver: yupResolver(formSchema),
   });
-  function onSubmit(dataForm) {
-    registerr(dataForm);
-    return;
-  }
-  console.log(errors);
-  const navigate = useNavigate();
-
   function registerr(data) {
     if (naissanceReg === null) {
       return;
@@ -74,15 +67,18 @@ export function Register() {
         reset();
       });
   }
+  function onSubmit(dataForm) {
+    registerr(dataForm);
+  }
+  console.log(errors);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (naissanceReg != null) {
       setDatesend(
-        naissanceReg.getDate() +
-          '-' +
-          (naissanceReg.getMonth() * 1 + 1) +
-          '-' +
-          naissanceReg.getFullYear()
+        `${naissanceReg.getDate()}-${
+          naissanceReg.getMonth() * 1 + 1
+        }-${naissanceReg.getFullYear()}`
       );
     }
   }, [naissanceReg]);
@@ -169,12 +165,16 @@ export function Register() {
           <p className="errorRegister">{errors.mdpVerif.message}</p>
         )}
 
-        <button className="button-31" type="Submit">
+        <button className="button-31" type="submit">
           Inscription
         </button>
       </form>
       <p className="pRegister">Vous avez déjà un compte? Connetez vous !</p>
-      <button className="button-31" onClick={() => navigate('/login')}>
+      <button
+        type="button"
+        className="button-31"
+        onClick={() => navigate('/login')}
+      >
         Se connecter
       </button>
     </div>
