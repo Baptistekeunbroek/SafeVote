@@ -48,6 +48,26 @@ VALUES
         'Mr',
         '0684456257'
     );
+    INSERT INTO
+    utilisateurs (
+        email,
+        nom,
+        prenom,
+        password,
+        dateDeNaissance,
+        genre,
+        tel
+    )
+VALUES
+    (
+        'baptiste.keunebroek@gmail.com',
+        'Keunebroek',
+        'Baptiste',
+        '$2b$10$E5jcnoMx1m39NZRq/Yz4ouZvt1WKf7keGJCJVJO4UtUhqpl3.p..W',
+        '10-05-2001',
+        'Mr',
+        '0652477441'
+    );
 
 INSERT INTO
     candidats(nomC, prenomC, partiPolitique,photo)
