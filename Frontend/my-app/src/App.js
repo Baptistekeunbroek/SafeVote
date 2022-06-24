@@ -82,7 +82,6 @@ function NavigationBar() {
 function Footer() {
   return (
     <div className="footer">
-      <p>This is some content in sticky footer</p>
       <Link to="/about">
         <button type="button" className="button-31">
           A propos
