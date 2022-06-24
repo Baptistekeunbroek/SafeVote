@@ -6,9 +6,9 @@ Création d'un site web de voe en ligne sécurisé et fiable.
 
 
 ## 🛠 Skills
-**Client:** React, CSS, HTML
+**Client:** React, CSS, HTML, Axios
 
-**Server:** Node, Express, passportjs
+**Server:** Node, Express, Passport, MySQL
 
 ## Lancer le project en server local
 
@@ -17,40 +17,19 @@ Cloner le project
 ```bash
   git clone https://github.com/Malo-LC/SafeVote
 ```
-Dans un premier terminal faire :
-
-```bash
-  cd Backend
-```
-
-Installer les extensions
+Dans un terminal dans le dossier racine, faire:
 
 ```bash
   npm install
 ```
-
-Lancer le server
-
+Puis
 ```bash
-  npm run start
+  npm installDependencies
+```
+Et enfin
+```bash
+  npm start
 ```
 
-Puis faire les étapes suivantes dans un deuxième terminal :
 
-```bash
-  cd Frontend/my-app
-```
-
-Installer les extensions
-
-```bash
-  npm install
-```
-
-Lancer le server
-
-```bash
-  npm run start
-```
-
-Puis exécuter le script [sql](https://github.com/Malo-LC/SafeVote/blob/main/database.sql) pour créer la base de données
+Puis exécuter le script [sql](https://github.com/Malo-LC/SafeVote/blob/main/database.sql) pour créer la base de données. Si il y a des problèmes avec la bdd, regarder dans le fichier ressources.txt, et exécutez les deux commandes SQL, par exemple dans MySQL Workbench
