@@ -57,21 +57,25 @@ export function UserInfo() {
   }
   return (
     <div className="App">
-      <div className='Info'>
-      <h1 className="connected">Vous êtes connecté à votre compte</h1>
-      <h3>
-        Bonjour {genre} {prenom} {nom}{' '}
-      </h3>
-      <h3>Email : {email}</h3>
-      <h3>Numéro de téléphone : {tel}</h3>
-      <button type="button" className="button-31user width10" onClick={logout}>
-        Se déconnecter
-      </button>
-      <Link to="/candidats">
-        <button type="button" className="button-31user">
-          Candidats
+      <div className="Info">
+        <h1 className="connected">Vous êtes connecté à votre compte</h1>
+        <h3>
+          Bonjour {genre} {prenom} {nom}{' '}
+        </h3>
+        <h3>Email : {email}</h3>
+        <h3>Numéro de téléphone : {tel}</h3>
+        <button
+          type="button"
+          className="button-31user width10"
+          onClick={logout}
+        >
+          Se déconnecter
         </button>
-      </Link>
+        <Link to="/candidats">
+          <button type="button" className="button-31user">
+            Candidats
+          </button>
+        </Link>
       </div>
     </div>
   );

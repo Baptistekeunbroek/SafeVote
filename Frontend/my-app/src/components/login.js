@@ -80,8 +80,8 @@ export function Login() {
           >
             Créer un compte
           </button>
-          </div>
         </div>
       </div>
-      );
+    </div>
+  );
 }
