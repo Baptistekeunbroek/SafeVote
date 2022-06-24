@@ -1,18 +1,28 @@
+.regis{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  border-radius: 30px;
+  background: #006D77;
+  height: 500px;
+  overflow: auto;
+}
+
+
 .register {
   display: flex;
-  margin: 0px;
   flex-direction: column;
-  width: 100%;
   justify-content: center;
   align-items: center;
 }
 
 .inputRegister {
-  margin: 10px;
+  margin: 5px;
   background: none;
   border: none;
   border-bottom: 1px solid #6e7f80;
-  color: white;
+  color: black;
   height: 40px;
   font-size: 16px;
   width: 200px;
@@ -44,11 +54,11 @@ input:focus {
 }
 
 .react-date-picker {
-  margin: 10px;
+  margin: 1px;
   background: none;
   border: none;
-  color: white;
-  height: 40px;
+  color: black;
+  height: 20px;
   width: 200px;
   border-bottom: 1px solid #6e7f80;
 }
@@ -69,32 +79,15 @@ input:focus {
 }
 
 .button-31 {
-  background-color: #222;
-  border-radius: 4px;
-  border-style: none;
-  box-sizing: border-box;
-  color: #fff;
+  background-color: #EDF6F9;
+  color: black;
+  border: none;
+  padding: 14px 28px;
+  font-size: 16px;
   cursor: pointer;
   display: inline-block;
-  font-family: 'Farfetch Basis', 'Helvetica Neue', Arial, sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 1.5;
-  margin: 0;
-  max-width: none;
-  min-height: 44px;
-  min-width: 10px;
-  outline: none;
-  overflow: hidden;
-  padding: 9px 20px 8px;
-  position: relative;
-  text-align: center;
-  text-transform: none;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  width: 8%;
-  margin-top: 10px;
+  width:auto;
+  margin-bottom: 10px;
 }
 
 .button-31:hover,
@@ -112,11 +105,5 @@ input:focus {
 
 .pRegister {
   color: white;
-  margin-top: 50px;
 }
 
-.width20 {
-  width: 80px !important;
-  margin: 0 !important;
-  padding: 10px !important;
-}

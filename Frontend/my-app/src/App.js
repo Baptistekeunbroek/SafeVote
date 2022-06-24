@@ -78,6 +78,14 @@ function NavigationBar() {
   );
 }
 
+const Footer = () => (
+  <div className="footer">
+    <p>This is some content in sticky footer</p>
+  </div>
+);
+
+
+
 function App() {
   return (
     <div className="App">
@@ -90,6 +98,7 @@ function App() {
           <Route path="/userinfo" element={<UserInfo />} />
           <Route path="/candidats" element={<Candidats />} />
         </Routes>
+        <Footer />
       </Router>
     </div>
   );

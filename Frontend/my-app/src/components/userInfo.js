@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { useState, useEffect, React } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import './userInfo.css';
 
 export function UserInfo() {
   const navigate = useNavigate();

@@ -2,11 +2,15 @@
   margin: 10px;
   background: none;
   border: none;
-  border-bottom: 1px solid #6e7f80;
-  color: white;
+  border-bottom: 1px solid #FFFFFF;
+  color: #FFFFFF;
   height: 40px;
   font-size: 16px;
   width: 200px;
+}
+
+::placeholder{
+  color:#FFFFFF;
 }
 
 input:focus {
@@ -14,32 +18,17 @@ input:focus {
 }
 
 .button-31 {
-  background-color: #222;
-  border-radius: 4px;
-  border-style: none;
-  box-sizing: border-box;
-  color: #fff;
+  background-color: #EDF6F9;
+  color: black;
+  border: none;
+  padding: 14px 28px;
+  font-size: 16px;
   cursor: pointer;
   display: inline-block;
-  font-family: 'Farfetch Basis', 'Helvetica Neue', Arial, sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 1.5;
-  margin: 0;
-  max-width: none;
-  min-height: 44px;
-  min-width: 10px;
-  outline: none;
-  overflow: hidden;
-  padding: 9px 20px 8px;
-  position: relative;
-  text-align: center;
-  text-transform: none;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  width: 8%;
-  margin-top: 10px;
+  width:auto;
+  margin-bottom: 10px;
+
+  
 }
 
 .button-31:hover,
@@ -47,20 +36,30 @@ input:focus {
   opacity: 0.75;
 }
 
-.width10 {
-  width: 10%;
-}
-
 .h1Login {
   font-size: 50px;
   font-weight: bold;
-  margin-top: 50px;
+  margin-top: 5px;
   text-align: center;
-  color: white;
+  color: #FFFFFF;
 }
 
 .pLogin {
-  color: white;
-  margin-top: 50px;
+  color: #FFFFFF;
+  margin-top: 30px;
+  margin-left: 15px;
+  margin-right: 15px;
 }
 
+.log {
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  border-radius: 30px;
+  background: #006D77;
+
+}
+
+
+.App {}

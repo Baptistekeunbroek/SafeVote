@@ -84,92 +84,93 @@ export function Register() {
   }, [naissanceReg]);
 
   return (
-    <div className="register">
-      <h1 className="h1Register">Créer un compte</h1>
-      <form onSubmit={handleSubmit(onSubmit)} className="register">
-        <div className="flexRow">
-          <select
-            className="button-31 width20"
-            {...register('Genre', { required: true })}
-          >
-            <option value="Mr">Mr</option>
-            <option value="Mrs">Mme</option>
-            <option value="Miss">Autre</option>
-          </select>
-          <div className="flexColumn">
-            <input
-              type="text"
-              className="inputRegister"
-              placeholder="Prenom"
-              {...register('Prenom')}
-            />
-            {errors.Prenom && (
-              <p className="errorRegister">{errors.Prenom.message}</p>
-            )}
+    <div className="regis">
+      <div className="register">
+        <h1 className="h1Register">Créer un compte</h1>
+        <form onSubmit={handleSubmit(onSubmit)} className="register">
+          <div className="flexRow">
+            <select
+              className="button-31"
+              {...register('Genre', { required: true })}
+            >
+              <option value="Mr">Mr</option>
+              <option value="Mrs">Mme</option>
+              <option value="Miss">Autre</option>
+            </select>
+            <div className="flexColumn">
+              <input
+                type="text"
+                className="inputRegister"
+                placeholder="Prenom"
+                {...register('Prenom')}
+              />
+              {errors.Prenom && (
+                <p className="errorRegister">{errors.Prenom.message}</p>
+              )}
+            </div>
+
+            <div className="flexColumn">
+              <input
+                type="text"
+                className="inputRegister"
+                placeholder="Nom"
+                {...register('Nom')}
+              />
+              {errors.Nom && (
+                <p className="errorRegister">{errors.Nom.message}</p>
+              )}
+            </div>
           </div>
 
-          <div className="flexColumn">
-            <input
-              type="text"
-              className="inputRegister"
-              placeholder="Nom"
-              {...register('Nom')}
-            />
-            {errors.Nom && (
-              <p className="errorRegister">{errors.Nom.message}</p>
-            )}
-          </div>
-        </div>
+          <input
+            type="text"
+            className="inputRegister"
+            placeholder="Email"
+            {...register('Email')}
+          />
+          {errors.Email && (
+            <p className="errorRegister">{errors.Email.message}</p>
+          )}
 
-        <input
-          type="text"
-          className="inputRegister"
-          placeholder="Email"
-          {...register('Email')}
-        />
-        {errors.Email && (
-          <p className="errorRegister">{errors.Email.message}</p>
-        )}
+          <input
+            type="tel"
+            className="inputRegister"
+            placeholder="Téléphone"
+            {...register('Tel')}
+          />
+          {errors.Tel && <p className="errorRegister">{errors.Tel.message}</p>}
+          <p className="Datepicker">Date de naissance</p>
+          <DatePicker
+            onChange={setNaissanceReg}
+            value={naissanceReg}
+            format="dd-MM-y"
+            clearIcon={null}
+            calendarIcon={null}
+            customStyles={{ dateInput: { borderWidth: 0 } }}
+          />
 
-        <input
-          type="tel"
-          className="inputRegister"
-          placeholder="Téléphone"
-          {...register('Tel')}
-        />
-        {errors.Tel && <p className="errorRegister">{errors.Tel.message}</p>}
-        <p className="Datepicker">Date de naissance</p>
-        <DatePicker
-          onChange={setNaissanceReg}
-          value={naissanceReg}
-          format="dd-MM-y"
-          clearIcon={null}
-          calendarIcon={null}
-          customStyles={{ dateInput: { borderWidth: 0 } }}
-        />
-
-        <input
-          className="inputRegister"
-          type="password"
-          placeholder="Mot de passe"
-          {...register('mdp')}
-        />
-        {errors.mdp && <p className="errorRegister">{errors.mdp.message}</p>}
-        <input
-          className="inputRegister"
-          type="password"
-          placeholder="Répétez le mot de passe"
-          {...register('mdpVerif')}
-        />
-        {errors.mdpVerif && (
-          <p className="errorRegister">{errors.mdpVerif.message}</p>
-        )}
+          <input
+            className="inputRegister"
+            type="password"
+            placeholder="Mot de passe"
+            {...register('mdp')}
+          />
+          {errors.mdp && <p className="errorRegister">{errors.mdp.message}</p>}
+          <input
+            className="inputRegister"
+            type="password"
+            placeholder="Répétez le mot de passe"
+            {...register('mdpVerif')}
+          />
+          {errors.mdpVerif && (
+            <p className="errorRegister">{errors.mdpVerif.message}</p>
+          )}
 
         <button className="button-31" type="submit">
           Inscription
         </button>
       </form>
-      <p className="pRegister">Vous avez déjà un compte? Connetez vous !</p>
+      <p className="pRegister">Vous avez déjà un compte? Connectez vous !</p>
       <button
         type="button"
         className="button-31"
@@ -177,6 +178,7 @@ export function Register() {
       >
         Se connecter
       </button>
+    </div>
     </div>
   );
 }
