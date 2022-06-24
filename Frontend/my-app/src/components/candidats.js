@@ -1,7 +1,6 @@
 import axios from 'axios';
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, React } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useTable } from 'react-table';
 import './candidats.css';
 import { Voter } from './voter';
 
@@ -22,7 +21,7 @@ export function Candidats() {
       .catch((error) => {
         console.log(error);
       });
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, []); // eslint-disable-line
 
   useEffect(() => {
     axios
@@ -31,75 +30,38 @@ export function Candidats() {
       })
       .then((res) => {
         setCandidats(res.data.candidats);
+        console.log(res.data.candidats);
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
 
-  const columns = useMemo(
-    () => [
-      {
-        Header: 'Numéro',
-        accessor: 'idCandidat',
-      },
-      {
-        Header: 'Prenom',
-        accessor: 'prenomC',
-      },
-      {
-        Header: 'Nom',
-        accessor: 'nomC',
-      },
-      {
-        Header: 'Parti politique',
-        accessor: 'partiPolitique',
-      },
-    ],
-    []
-  );
-
-  function Table({ columns, data }) {
-    const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-      useTable({
-        columns,
-        data,
-      });
-
-    return (
-      <table {...getTableProps()}>
-        <thead>
-          {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column) => (
-                <th {...column.getHeaderProps()}>{column.render('Header')}</th>
-              ))}
-            </tr>
-          ))}
-        </thead>
-        <tbody {...getTableBodyProps()}>
-          {rows.map((row, i) => {
-            prepareRow(row);
-            return (
-              <tr {...row.getRowProps()}>
-                {row.cells.map((cell) => {
-                  return (
-                    <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
-                  );
-                })}
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-    );
+  if (candidats.length === 0) {
+    return <div>Loading...</div>;
   }
 
   return (
     <div className="candidats">
       <h1 className="h1Candidats">Liste des candidats</h1>
+      <div className="candidatsTable">
+        {candidats.map((candidat) => (
+          <div className="candidat">
+            <img
+              src={candidat.photo}
+              alt="candidat"
+              className="candidatPhoto"
+            />
+            <div className="candidatInfo">
+              <h2 className="h2Candidat">
+                {candidat.prenomC} {candidat.nomC}
+              </h2>
+              <p className="pCandidat">{candidat.partiPolitique}</p>
+            </div>
+          </div>
+        ))}
+      </div>
 
-      <Table columns={columns} data={candidats} />
       <Voter candidats={candidats} />
     </div>
   );

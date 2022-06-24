@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react';
+import axios from 'axios';
+import { useState, useEffect, React } from 'react';
 import { StepChoix } from './stepsForm/stepChoix';
 import { StepConfirmation } from './stepsForm/stepConfirmation';
 import { StepResultat } from './stepsForm/stepResultat';
 import { StepVote } from './stepsForm/stepVote';
 import { Progression } from './stepsForm/progression';
-import axios from 'axios';
 
 export function MultiStepVote({ candidats }) {
   const [stepActuel, setStepActuel] = useState(0);
@@ -54,14 +54,12 @@ export function MultiStepVote({ candidats }) {
     { name: 'Step 4', component: <StepResultat vote={vote} /> },
   ];
   if (candidats.length === 0) {
-    return <div className="multiStep"></div>;
+    return <div className="multiStep" />;
   }
   return (
     <div className="multiStep">
-      <Progression step={stepActuel} />
+      <Progression className="progres" step={stepActuel} />
       <div className="multiStepSteps">{steps[stepActuel].component}</div>
     </div>
   );
 }
-
-export default MultiStepVote;

@@ -9,6 +9,7 @@ CREATE TABLE candidats(
     nomC VARCHAR(50),
     prenomC VARCHAR(50),
     partiPolitique VARCHAR(50),
+    photo varchar(500),
     PRIMARY KEY(idCandidat)
 );
 
@@ -49,19 +50,19 @@ VALUES
     );
 
 INSERT INTO
-    candidats(nomC, prenomC, partiPolitique)
+    candidats(nomC, prenomC, partiPolitique,photo)
 VALUES
-    ('Melenchon', 'Jean-luc', 'LFI');
+    ('Melenchon', 'Jean-luc', 'LFI','https://img.20mn.fr/BxVfVpOnSem0eySjbAQZMg/2048x1536-fit_jean-luc-melenchon-recu-a-l-elysee-le-25-juin-2016.jpg');
 
 INSERT INTO
-    candidats(nomC, prenomC, partiPolitique)
+    candidats(nomC, prenomC, partiPolitique,photo)
 VALUES
-    ('Macron', 'Emmanuel', 'LREM');
+    ('Macron', 'Emmanuel', 'LREM','https://cdn-s-www.bienpublic.com/images/46E73E51-5DBE-4731-B8B8-114B8F1D9890/NW_raw/photo-afp-1498942715.jpg');
 
 INSERT INTO
-    candidats(nomC, prenomC, partiPolitique)
+    candidats(nomC, prenomC, partiPolitique,photo)
 VALUES
-    ('Le Pen', 'Marine', 'RN');
+    ('Le Pen', 'Marine', 'RN','https://cdn-s-www.republicain-lorrain.fr/images/AE2F98DD-DC36-4925-A921-769C99163174/NW_raw/marine-le-pen-photo-afp-1488452154.jpg');
 
 -- insert into vote(idUser,idCandidat) values(1,2);
 select

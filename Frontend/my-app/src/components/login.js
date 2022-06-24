@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, React } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './login.css';
 
@@ -20,9 +20,8 @@ export function Login() {
       })
       .catch((error) => {
         console.log(error);
-      });
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
-  // const [data, setData] = useState('');
+      }); // eslint-disable-next-line
+  }, []);
 
   const login = () => {
     axios
@@ -65,7 +64,7 @@ export function Login() {
           value={passwordLog}
           onChange={(e) => setPasswordLog(e.target.value)}
         />
-        <button className="button-31" onClick={login}>
+        <button type="button" className="button-31" onClick={login}>
           Connexion
         </button>
       </div>
@@ -73,6 +72,7 @@ export function Login() {
         Vous n'avez pas encore créé de compte? faite en un maintenant !
       </p>
       <button
+        type="button"
         className="button-31 width10"
         onClick={() => navigate('/register')}
       >

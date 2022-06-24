@@ -1,6 +1,6 @@
-import { MultiStepVote } from './multiStep';
-import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useEffect, useState, React } from 'react';
+import { MultiStepVote } from './multiStep';
 
 export function Voter({ candidats }) {
   const [vote, setVote] = useState(false);
@@ -27,15 +27,18 @@ export function Voter({ candidats }) {
       </div>
     );
   }
+  console.log(vote);
 
   return (
     <div className="voter">
       {vote ? (
-        <h1>Vous avez déjà voté</h1>
+        <div>
+          <h1>Vous avez déjà voté</h1>
+          <p>Regardez vos mails pour voir votre vote</p>
+        </div>
       ) : (
         <MultiStepVote candidats={candidats} />
       )}
-      <p>Regardez vos mails pour voir votre vote</p>
     </div>
   );
 }

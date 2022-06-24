@@ -1,13 +1,12 @@
-import './App.css';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { React } from 'react';
 import { Register } from './components/register';
 import { Login } from './components/login';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import { UserInfo } from './components/userInfo';
 import sample from './misc/videoBack.mp4';
 import { Candidats } from './components/candidats';
 import logo from './safevotelogo.png';
-
-function BG() { }
+import './App.css';
 
 function Home() {
   return (
@@ -28,13 +27,12 @@ function Home() {
 function NavigationBar() {
   return (
     <div className="NavBar">
-      <div className='logos'>
+      <div className="logos">
         <img src={logo} alt="logo" />
       </div>
-      <div className='navigation'>
+      <div className="navigation">
         <div className="acceuil">
-
-          <Link to={'/'}>
+          <Link to="/">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="icon icon-tabler icon-tabler-home"
@@ -47,16 +45,16 @@ function NavigationBar() {
               strokeLinecap="round"
               strokeLinejoin="round"
             >
-              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-              <polyline points="5 12 3 12 12 3 21 12 19 12"></polyline>
-              <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7"></path>
-              <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"></path>
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <polyline points="5 12 3 12 12 3 21 12 19 12" />
+              <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+              <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
             </svg>
           </Link>
         </div>
-        <div className='separator'></div>
+        <div className="separator" />
         <div className="connexion">
-          <Link to={'/login'}>
+          <Link to="/login">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="icon icon-tabler icon-tabler-user"
@@ -69,9 +67,9 @@ function NavigationBar() {
               strokeLinecap="round"
               strokeLinejoin="round"
             >
-              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-              <circle cx="12" cy="7" r="4"></circle>
-              <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <circle cx="12" cy="7" r="4" />
+              <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
             </svg>
           </Link>
         </div>
@@ -84,17 +82,9 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <BG />
         <NavigationBar />
         <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <Home />
-              </>
-            }
-          />
+          <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/userinfo" element={<UserInfo />} />
