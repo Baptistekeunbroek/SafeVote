@@ -4,10 +4,9 @@ export function StepConfirmation({ changeState, vote }) {
   return (
     <div className="StepConfirmation">
       <p>Vous avez voté pour : </p>
-      <div className="flexRow">
-        <p className="mr10">{vote.prenomC} </p>
-        <p>{vote.nomC}</p>
-      </div>
+      <p className="mr10">
+        {vote.prenomC} {vote.nomC}
+      </p>
       <button
         type="button"
         className="button-31"

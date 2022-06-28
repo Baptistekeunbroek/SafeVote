@@ -6,7 +6,7 @@ import { UserInfo } from './components/userInfo';
 import sample from './misc/videoBack.mp4';
 import { Candidats } from './components/candidats';
 import { About } from './components/about';
-import logo from './safevotelogo.png';
+import logo from './icons/logo.png';
 import './App.css';
 
 function Home() {
@@ -29,7 +29,7 @@ function NavigationBar() {
   return (
     <div className="NavBar">
       <div className="logos">
-        <img src={logo} alt="logo" />
+        <img src={logo} alt="logo" className="logo" />
       </div>
       <div className="navigation">
         <div className="acceuil">
@@ -78,7 +78,7 @@ function NavigationBar() {
     </div>
   );
 }
-
+// eslint-disable-next-line
 function Footer() {
   return (
     <div className="footer">
@@ -104,7 +104,7 @@ function App() {
           <Route path="/candidats" element={<Candidats />} />
           <Route path="/about" element={<About />} />
         </Routes>
-        <Footer />
+        {/* <Footer /> */}
       </Router>
     </div>
   );

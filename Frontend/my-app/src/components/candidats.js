@@ -30,7 +30,6 @@ export function Candidats() {
       })
       .then((res) => {
         setCandidats(res.data.candidats);
-        console.log(res.data.candidats);
       })
       .catch((error) => {
         console.log(error);
@@ -46,7 +45,7 @@ export function Candidats() {
       <h1 className="h1Candidats">Liste des candidats</h1>
       <div className="candidatsTable">
         {candidats.map((candidat) => (
-          <div className="candidat">
+          <div className="candidat" key={candidat.idCandidat}>
             <img
               src={candidat.photo}
               alt="candidat"

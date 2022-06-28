@@ -2,6 +2,7 @@ import { React } from 'react';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
+import './stepChoix.css';
 
 export function StepChoix({ candidats, changeState, changeVote }) {
   const formSchema = Yup.object().shape({
@@ -28,14 +29,11 @@ export function StepChoix({ candidats, changeState, changeVote }) {
   return (
     <div className="StepChoix">
       <p>Pour qui voulez vous voter ?</p>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <select
-          className="selectVoter"
-          {...register('Vote', { required: true })}
-        >
+      <form className="formChoix" onSubmit={handleSubmit(onSubmit)}>
+        <select className="button-31" {...register('Vote', { required: true })}>
           {candidats.map((candidat) => (
             <option key={candidat.idCandidat} value={candidat.idCandidat}>
-              {candidat.nomC}
+              {candidat.prenomC} {candidat.nomC}
             </option>
           ))}
         </select>

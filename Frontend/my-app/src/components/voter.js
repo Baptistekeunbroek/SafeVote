@@ -1,9 +1,10 @@
 import axios from 'axios';
 import { useEffect, useState, React } from 'react';
 import { MultiStepVote } from './multiStep';
+import './voter.css';
 
 export function Voter({ candidats }) {
-  const [vote, setVote] = useState(false);
+  const [vote, setVote] = useState(true);
 
   useEffect(() => {
     axios
@@ -13,6 +14,8 @@ export function Voter({ candidats }) {
       .then((res) => {
         if (res.data.vote.length > 0) {
           setVote(true);
+        } else {
+          setVote(false);
         }
       })
       .catch((error) => {
@@ -27,14 +30,15 @@ export function Voter({ candidats }) {
       </div>
     );
   }
-  console.log(vote);
 
   return (
     <div className="voter">
       {vote ? (
-        <div>
-          <h1>Vous avez déjà voté</h1>
-          <p>Regardez vos mails pour voir votre vote</p>
+        <div className="dejaVoterBig">
+          <div className="dejaVoter">
+            <h1>Vous avez déjà voté</h1>
+            <p>Regardez vos mails pour voir votre vote</p>
+          </div>
         </div>
       ) : (
         <MultiStepVote candidats={candidats} />

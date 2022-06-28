@@ -17,10 +17,7 @@ export function StepVote({ changeState, vote }) {
   }, []); // eslint-disable-line
   return (
     <div className="StepVote">
-      <h1>
-        Vous avez voté pour {vote.prenomC}
-        {vote.nomC}
-      </h1>
+      <h1>Vous avez voté pour {`${vote.prenomC}  ${vote.nomC}`}</h1>
       <button
         type="button"
         className="button-31"

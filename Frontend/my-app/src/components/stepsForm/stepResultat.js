@@ -3,7 +3,6 @@ import { useEffect, React } from 'react';
 
 export function StepResultat({ vote }) {
   useEffect(() => {
-    console.log(vote);
     if (vote) {
       axios
         .post(

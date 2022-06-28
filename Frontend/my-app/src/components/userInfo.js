@@ -51,7 +51,7 @@ export function UserInfo() {
   if (email === '' || nom === '' || prenom === '') {
     return (
       <div className="App">
-        <p>LOADING</p>
+        <p>Chargement...</p>
       </div>
     );
   }

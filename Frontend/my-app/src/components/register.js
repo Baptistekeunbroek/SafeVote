@@ -93,7 +93,7 @@ export function Register() {
               className="button-31"
               {...register('Genre', { required: true })}
             >
-              <option value="Mr">Mr</option>
+              <option value="Mr">M</option>
               <option value="Mrs">Mme</option>
               <option value="Miss">Autre</option>
             </select>

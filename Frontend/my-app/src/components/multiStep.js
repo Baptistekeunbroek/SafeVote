@@ -5,6 +5,7 @@ import { StepConfirmation } from './stepsForm/stepConfirmation';
 import { StepResultat } from './stepsForm/stepResultat';
 import { StepVote } from './stepsForm/stepVote';
 import { Progression } from './stepsForm/progression';
+import './multiStep.css';
 
 export function MultiStepVote({ candidats }) {
   const [stepActuel, setStepActuel] = useState(0);
@@ -57,9 +58,12 @@ export function MultiStepVote({ candidats }) {
     return <div className="multiStep" />;
   }
   return (
-    <div className="multiStep">
-      <Progression className="progres" step={stepActuel} />
-      <div className="multiStepSteps">{steps[stepActuel].component}</div>
+    <div className="multiStepBig">
+      <div className="multiStep">
+        <h1>Voter</h1>
+        <Progression className="progres" step={stepActuel} />
+        <div className="multiStepSteps">{steps[stepActuel].component}</div>
+      </div>
     </div>
   );
 }

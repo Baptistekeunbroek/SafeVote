@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #E2F4F6;
+  background-color: #e2f4f6;
   height: 100%;
 }
 
@@ -17,4 +17,19 @@ code {
 html {
   min-height: 100%;
   position: relative;
+}
+
+h1 {
+  font-size: calc(18px + 0.6vw);
+  font-weight: bold;
+}
+
+h2 {
+  font-size: calc(14px + 0.25vw);
+
+  font-weight: bold;
+}
+
+p {
+  font-size: calc(12px + 0.15vw);
 }

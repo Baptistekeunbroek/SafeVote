@@ -48,7 +48,8 @@ VALUES
         'Mr',
         '0684456257'
     );
-    INSERT INTO
+
+INSERT INTO
     utilisateurs (
         email,
         nom,
@@ -70,19 +71,119 @@ VALUES
     );
 
 INSERT INTO
-    candidats(nomC, prenomC, partiPolitique,photo)
+    candidats(nomC, prenomC, partiPolitique, photo)
 VALUES
-    ('Melenchon', 'Jean-luc', 'LFI','https://img.20mn.fr/BxVfVpOnSem0eySjbAQZMg/2048x1536-fit_jean-luc-melenchon-recu-a-l-elysee-le-25-juin-2016.jpg');
+    (
+        'Melenchon',
+        'Jean-luc',
+        'LFI',
+        'https://img.20mn.fr/BxVfVpOnSem0eySjbAQZMg/2048x1536-fit_jean-luc-melenchon-recu-a-l-elysee-le-25-juin-2016.jpg'
+    );
 
 INSERT INTO
-    candidats(nomC, prenomC, partiPolitique,photo)
+    candidats(nomC, prenomC, partiPolitique, photo)
 VALUES
-    ('Macron', 'Emmanuel', 'LREM','https://cdn-s-www.bienpublic.com/images/46E73E51-5DBE-4731-B8B8-114B8F1D9890/NW_raw/photo-afp-1498942715.jpg');
+    (
+        'Macron',
+        'Emmanuel',
+        'LREM',
+        'https://cdn-s-www.bienpublic.com/images/46E73E51-5DBE-4731-B8B8-114B8F1D9890/NW_raw/photo-afp-1498942715.jpg'
+    );
 
 INSERT INTO
-    candidats(nomC, prenomC, partiPolitique,photo)
+    candidats(nomC, prenomC, partiPolitique, photo)
 VALUES
-    ('Le Pen', 'Marine', 'RN','https://cdn-s-www.republicain-lorrain.fr/images/AE2F98DD-DC36-4925-A921-769C99163174/NW_raw/marine-le-pen-photo-afp-1488452154.jpg');
+    (
+        'Le Pen',
+        'Marine',
+        'RN',
+        'https://cdn-s-www.republicain-lorrain.fr/images/AE2F98DD-DC36-4925-A921-769C99163174/NW_raw/marine-le-pen-photo-afp-1488452154.jpg'
+    );
+
+INSERT INTO
+    candidats(nomC, prenomC, partiPolitique, photo)
+VALUES
+    (
+        'Hidalgo',
+        'Anne',
+        'PS',
+        "https://hospitality-on.com/sites/default/files/styles/image825xosef/public/import/contenu/anne-hidalgo.jpg"
+    );
+
+INSERT INTO
+    candidats(nomC, prenomC, partiPolitique, photo)
+VALUES
+    (
+        'Poutou',
+        'Philippe',
+        'LO',
+        'https://cdn-s-www.ledauphine.com/images/5F5CD3EF-1BEC-4AA0-AA26-F943EE6027EA/NW_raw/philippe-poutou-archives-afp-1356467319.jpg'
+    );
+
+INSERT INTO
+    candidats(nomC, prenomC, partiPolitique, photo)
+VALUES
+    (
+        'Zemmour',
+        'Éric',
+        'Reconquête',
+        'https://fl24.net/wp-content/uploads/2020/05/zemmour-1068x712.jpg'
+    );
+    
+INSERT INTO
+    candidats(nomC, prenomC, partiPolitique, photo)
+VALUES
+    (
+        'Pécresse',
+        'Valérie',
+        'FVPA',
+        'https://static.cnews.fr/sites/default/files/000_ua838_1.jpg'
+    );
+INSERT INTO
+    candidats(nomC, prenomC, partiPolitique, photo)
+VALUES
+    (
+        'Arthaud',
+        'Nathalie',
+        'LO',
+        'https://www.magcentre.fr/wp-content/uploads/2016/03/10982242_709619955810717_3980400537565160389_n.jpg'
+    );
+INSERT INTO
+    candidats(nomC, prenomC, partiPolitique, photo)
+VALUES
+    (
+        'Roussel',
+        'Fabien',
+        'PCF',
+        'https://cdn.static01.nicematin.com/media/npo/mobile_1440w/2018/11/files-this-file-pho-25766157.jpg'
+    );
+INSERT INTO
+    candidats(nomC, prenomC, partiPolitique, photo)
+VALUES
+    (
+        'Lasalle',
+        'Jean',
+        'Résistons !',
+        'https://fr.web.img5.acsta.net/pictures/19/01/03/17/39/2520084.jpg'
+    );
+INSERT INTO
+    candidats(nomC, prenomC, partiPolitique, photo)
+VALUES
+    (
+        'Jadot',
+        'Yannick',
+        'EELV',
+        'https://www.myeventnetwork.com/sites/default/files/styles/open_graph/public/2019-10/yannickjadot.jpg'
+    );
+INSERT INTO
+    candidats(nomC, prenomC, partiPolitique, photo)
+VALUES
+    (
+        'Dupont-Aignan',
+        'Nicolas',
+        'DLR',
+        'https://www.debout-la-france.fr/sites/default/files/membre/nda.jpg'
+    );
 
 -- insert into vote(idUser,idCandidat) values(1,2);
 select
@@ -105,4 +206,4 @@ select
 from
     utilisateurs
 where
-    id = 1
+    id = 1;
