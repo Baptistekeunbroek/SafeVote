@@ -56,7 +56,7 @@ export function UserInfo() {
     );
   }
   return (
-    <div className="App">
+    <div className="InfoBig">
       <div className="Info">
         <h1 className="connected">Vous êtes connecté à votre compte</h1>
         <h3>
@@ -73,7 +73,12 @@ export function UserInfo() {
         </button>
         <Link to="/candidats">
           <button type="button" className="button-31user">
-            Candidats
+            Voter
+          </button>
+        </Link>
+        <Link to="/sondage">
+          <button type="button" className="button-31user">
+            Sondage
           </button>
         </Link>
       </div>
