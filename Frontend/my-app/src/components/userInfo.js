@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useState, useEffect, React } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './userInfo.css';
 
 export function UserInfo() {
@@ -10,23 +10,6 @@ export function UserInfo() {
   const [prenom, setPrenom] = useState('');
   const [tel, setTel] = useState('');
   const [genre, setGenre] = useState('');
-
-  function Navbar2() {
-    return (
-      <div className="NavBar2">
-        <div className="navigation">
-            <Link to="/userInfo"><button className="button-31user2" type="button">Information</button></Link>
-            <Link to="/sondage"><button className="button-31user2 " type="button">Sondage</button></Link>
-            <Link to="/candidats"><button className="button-31user2 " type="button" >Voter</button></Link>
-        </div>
-      </div>
-      
-
-    );
-
-  }
-
-
 
   useEffect(() => {
     axios
@@ -73,11 +56,8 @@ export function UserInfo() {
     );
   }
   return (
-
-    <div className='app'>
-      <Navbar2 />
+    <div className="app">
       <div className="InfoBig">
-
         <div className="Info">
           <h1 className="connected">Vous êtes connecté à votre compte</h1>
           <h3>

@@ -10,6 +10,8 @@ import { Sondage } from './components/sondage/sondage';
 import { CreerSondage } from './components/sondage/creerSondage';
 import { SondageSpec } from './components/sondage/sondageSpec';
 import logo from './icons/logo.png';
+import { Navbar2 } from './components/navbar2';
+
 import './App.css';
 
 function Home() {
@@ -32,10 +34,11 @@ function NavigationBar() {
   return (
     <div className="NavBar">
       <div className="logos">
-        <Link to ="/"><img src={logo} alt="logo" className="logo" /></Link>
+        <Link to="/">
+          <img src={logo} alt="logo" className="logo" />
+        </Link>
       </div>
       <div className="navigation">
-        
         <div className="separator" />
         <div className="connexion">
           <Link to="/login">
@@ -79,6 +82,7 @@ function App() {
     <div className="App">
       <Router>
         <NavigationBar />
+        <Navbar2 />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
@@ -90,7 +94,7 @@ function App() {
           <Route path="/sondage/creer" element={<CreerSondage />} />
           <Route path="/sondage/:id" element={<SondageSpec />} />
         </Routes>
-        {<Footer />}
+        <Footer />
       </Router>
     </div>
   );
