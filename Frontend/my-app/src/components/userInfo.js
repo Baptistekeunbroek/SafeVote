@@ -15,11 +15,9 @@ export function UserInfo() {
     return (
       <div className="NavBar2">
         <div className="navigation">
-          <form className="form-inline">
             <Link to="/userInfo"><button className="button-31user2" type="button">Information</button></Link>
             <Link to="/sondage"><button className="button-31user2 " type="button">Sondage</button></Link>
             <Link to="/candidats"><button className="button-31user2 " type="button" >Voter</button></Link>
-          </form>
         </div>
       </div>
       
