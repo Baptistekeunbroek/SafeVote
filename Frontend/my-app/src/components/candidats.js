@@ -1,12 +1,26 @@
 import axios from 'axios';
 import { useState, useEffect, React } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './candidats.css';
 import { Voter } from './voter';
 
 export function Candidats() {
   const [candidats, setCandidats] = useState([]);
   const navigate = useNavigate();
+
+  function Navbar2() {
+    return (
+      <div className="NavBar2">
+        <div className="navigation">
+            <Link to="/userInfo"><button className="button-31user2" type="button">Information</button></Link>
+            <Link to="/sondage"><button className="button-31user2" type="button">Sondage</button></Link>
+            <Link to="/candidats"><button className="button-31user2" type="button" >Voter</button></Link>
+        </div>
+      </div>
+    );
+
+  }
+
 
   useEffect(() => {
     axios
@@ -42,6 +56,7 @@ export function Candidats() {
 
   return (
     <div className="candidats">
+      <Navbar2 />
       <h1 className="h1Candidats">Liste des candidats</h1>
       <div className="candidatsTable">
         {candidats.map((candidat) => (
