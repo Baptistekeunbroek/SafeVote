@@ -11,6 +11,25 @@ export function UserInfo() {
   const [tel, setTel] = useState('');
   const [genre, setGenre] = useState('');
 
+  function Navbar2() {
+    return (
+      <div className="NavBar2">
+        <div className="navigation">
+          <form class="form-inline">
+            <Link to="/userInfo"><button class="button-31user2" type="button">Information</button></Link>
+            <button class="button-31user2" type="button" >Historique</button>
+            <Link to="/sondage"><button class="button-31user2 " type="button">Sondage</button></Link>
+            <Link to="/candidats"><button class="button-31user2 " type="button" >Voter</button></Link>
+          </form>
+        </div>
+      </div>
+
+    );
+
+  }
+
+
+
   useEffect(() => {
     axios
       .get('http://localhost:5000/checkAuthentication', {
@@ -56,31 +75,26 @@ export function UserInfo() {
     );
   }
   return (
-    <div className="InfoBig">
-      <div className="Info">
-        <h1 className="connected">Vous êtes connecté à votre compte</h1>
-        <h3>
-          Bonjour {genre} {prenom} {nom}{' '}
-        </h3>
-        <h3>Email : {email}</h3>
-        <h3>Numéro de téléphone : {tel}</h3>
-        <button
-          type="button"
-          className="button-31user width10"
-          onClick={logout}
-        >
-          Se déconnecter
-        </button>
-        <Link to="/candidats">
-          <button type="button" className="button-31user">
-            Voter
+
+    <div className='app'>
+      <Navbar2 />
+      <div className="InfoBig">
+
+        <div className="Info">
+          <h1 className="connected">Vous êtes connecté à votre compte</h1>
+          <h3>
+            Bonjour {genre} {prenom} {nom}{' '}
+          </h3>
+          <h3>Email : {email}</h3>
+          <h3>Numéro de téléphone : {tel}</h3>
+          <button
+            type="button"
+            className="button-31user width10"
+            onClick={logout}
+          >
+            Se déconnecter
           </button>
-        </Link>
-        <Link to="/sondage">
-          <button type="button" className="button-31user">
-            Sondage
-          </button>
-        </Link>
+        </div>
       </div>
     </div>
   );
