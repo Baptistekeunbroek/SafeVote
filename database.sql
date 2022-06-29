@@ -25,8 +25,21 @@ CREATE TABLE utilisateurs(
     PRIMARY KEY(id)
 );
 
+CREATE TABLE sondage(
+	idSondage INT NOT NULL auto_increment unique,
+    titre varchar(60),
+    descr varchar(500),
+    option1 varchar (100),
+    option2 varchar (100),
+    option3 varchar (100),
+    option4 varchar (100),
+    userID int
+    );
+
 drop table if exists vote;
 CREATE TABLE vote(idUser INT, idCandidat INT);
+
+create table voteSondage(idUser int, idSondage int);
 
 INSERT INTO
     utilisateurs (

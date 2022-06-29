@@ -15,15 +15,23 @@ export function Register() {
     mdp: Yup.string()
       .required('Un mot de passe est requis')
       .min(4, 'Le mot de passe fait au moins 4 caractères')
-      .max(12, 'Le mot de passe fait ne doit pas faire plus de 12 caractères'),
+      .max(12, 'Le mot de passe ne doit pas faire plus de 12 caractères'),
     mdpVerif: Yup.string()
       .required('La confirmation du mot de passe est requis')
       .oneOf([Yup.ref('mdp')], 'Les mots de passes sont différents'),
-    Prenom: Yup.string().required('Un prenom est requis'),
-    Nom: Yup.string().required('Un nom est requis'),
-    Email: Yup.string().required('Un email est requis').email('Email invalide'),
-    Tel: Yup.string().required('Le téléphone est requis'),
-    // .matches(/^\d{10}$/, 'Le numéro de téléphone doit contenir 10 chiffres'),
+    Prenom: Yup.string()
+      .required('Un prenom est requis')
+      .max(50, 'Le prenom ne doit pas faire plus de 50 caractères'),
+    Nom: Yup.string()
+      .required('Un nom est requis')
+      .max(50, 'Le nom ne doit pas faire plus de 50 caractères'),
+    Email: Yup.string()
+      .required('Un email est requis')
+      .email('Email invalide')
+      .max(50, 'Le mail ne doit pas faire plus de 50 caractères'),
+    Tel: Yup.string()
+      .required('Le téléphone est requis')
+      .matches(/^\d{10}$/, 'Le numéro de téléphone doit contenir 10 chiffres'),
   });
 
   const {

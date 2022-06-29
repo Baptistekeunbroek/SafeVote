@@ -6,6 +6,9 @@ import { UserInfo } from './components/userInfo';
 import sample from './misc/videoBack.mp4';
 import { Candidats } from './components/candidats';
 import { About } from './components/about';
+import { Sondage } from './components/sondage/sondage';
+import { CreerSondage } from './components/sondage/creerSondage';
+import { SondageSpec } from './components/sondage/sondageSpec';
 import logo from './icons/logo.png';
 import './App.css';
 
@@ -103,6 +106,9 @@ function App() {
           <Route path="/userinfo" element={<UserInfo />} />
           <Route path="/candidats" element={<Candidats />} />
           <Route path="/about" element={<About />} />
+          <Route path="/sondage" element={<Sondage />} />
+          <Route path="/sondage/creer" element={<CreerSondage />} />
+          <Route path="/sondage/:id" element={<SondageSpec />} />
         </Routes>
         {/* <Footer /> */}
       </Router>

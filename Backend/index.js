@@ -228,6 +228,65 @@ app.post('/sendConfirmationEmail', async (req, res) => {
   });
 });
 
+app.post('/creerSondage', (req, res) => {
+  const { titre, description, option1, option2, option3, option4 } = req.body;
+  const id = req.user.id;
+
+  const query = `INSERT INTO sondage (userID, titre, descr, option1, option2, option3,option4) VALUES ('${id}', '${titre}', '${description}', '${option1}', '${option2}', '${option3}','${option4}')`;
+  db.query(query, (err, result) => {
+    if (err) {
+      res.status(500).send(err);
+      console.log(err);
+    } else {
+      res.status(200).json({
+        sondage: result,
+      });
+    }
+  });
+});
+
+app.get('/getSondages', (req, res) => {
+  const query = `SELECT * FROM sondage`;
+  db.query(query, (err, result) => {
+    if (err) {
+      res.status(500).send(err);
+      console.log(err);
+    } else {
+      res.status(200).json({
+        sondages: result,
+      });
+    }
+  });
+});
+
+app.get('/getSondage/:id', (req, res) => {
+  const query = `SELECT * FROM sondage WHERE idSondage = '${req.params.id}'`;
+  db.query(query, (err, result) => {
+    if (err) {
+      res.status(500).send(err);
+      console.log(err);
+    } else {
+      res.status(200).json({
+        sondage: result,
+      });
+    }
+  });
+});
+
+app.post('/voteSondage/:id', (req, res) => {
+  const query = `INSERT INTO voteSondage (idUser, idSondage) VALUES ('${req.user.id}', '${req.params.id}')`;
+  db.query(query, (err, result) => {
+    if (err) {
+      res.status(500).send(err);
+      console.log(err);
+    } else {
+      res.status(200).json({
+        vote: result,
+      });
+    }
+  });
+});
+
 app.listen(5000, () => {
   console.log('Server is running on port 5000');
 });
