@@ -67,12 +67,14 @@
     align-items: center;
 }
 
-.active, .button-31user2:hover {
+.active,
+.button-31user2:hover {
     background-color: #666;
     color: white;
-  }
+}
 
-  .active, .button-31user:hover {
+.active,
+.button-31user:hover {
     background-color: #666;
     color: white;
-  }
+}

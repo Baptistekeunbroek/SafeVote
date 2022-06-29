@@ -15,14 +15,15 @@ export function UserInfo() {
     return (
       <div className="NavBar2">
         <div className="navigation">
-          <form class="form-inline">
-            <Link to="/userInfo"><button class="button-31user2" type="button">Information</button></Link>
-            <button class="button-31user2" type="button" >Historique</button>
-            <Link to="/sondage"><button class="button-31user2 " type="button">Sondage</button></Link>
-            <Link to="/candidats"><button class="button-31user2 " type="button" >Voter</button></Link>
+          <form className="form-inline">
+            <Link to="/userInfo"><button className="button-31user2" type="button">Information</button></Link>
+            <button className="button-31user2" type="button" >Historique</button>
+            <Link to="/sondage"><button className="button-31user2 " type="button">Sondage</button></Link>
+            <Link to="/candidats"><button className="button-31user2 " type="button" >Voter</button></Link>
           </form>
         </div>
       </div>
+      
 
     );
 
