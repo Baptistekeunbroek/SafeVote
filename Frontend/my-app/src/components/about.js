@@ -10,7 +10,7 @@ import './About.css';
 export function About() {
   return (
     <div className="AboutBig">
-      <h1>Equipe</h1>
+      <h1>Équipe</h1>
       <div className="About">
         <Box>
           <CardMedia

@@ -93,3 +93,17 @@ svg {
   min-width: 100%;
   min-height: 100%;
 }
+
+.button-31propos{
+  background-color: #44878d;
+    color: white;
+    border: none;
+    padding: 10px 22px;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block;
+    width: auto;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    border-radius: 5px;
+}

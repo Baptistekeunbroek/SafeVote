@@ -63,8 +63,8 @@ function Footer() {
   return (
     <div className="footer">
       <Link to="/about">
-        <button type="button" className="button-31">
-          A propos
+        <button type="button" className="button-31propos">
+          À propos de nous
         </button>
       </Link>
     </div>
