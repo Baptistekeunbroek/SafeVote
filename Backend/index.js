@@ -11,6 +11,7 @@ const bcrypt = require('bcrypt');
 const nodemailer = require('nodemailer');
 const transporter = require('./config');
 const { mainModule } = require('process');
+const { appendFile } = require('fs');
 
 // Inintialisation de la bdd
 let options = {
@@ -87,12 +88,6 @@ app.post('/register', (req, res) => {
   });
 });
 
-app.get('/flash', function (req, res) {
-  // Set a flash message by passing the key, followed by the value, to req.flash().
-  req.flash('info', 'Flash is back!');
-  // res.redirect('/');
-});
-
 app.post('/login', (req, res, next) => {
   passport.authenticate('local', {}, (err, user) => {
     if (err) {
@@ -136,7 +131,6 @@ app.post('/logout', function (req, res, next) {
 
 app.get('/checkAuthentication', (req, res) => {
   const authenticated = req.isAuthenticated();
-
   if (authenticated) {
     res.status(200).json({
       auth: true,
@@ -166,7 +160,21 @@ app.get('/getUser', (req, res) => {
   });
 });
 
-app.get('/getcandidats', (req, res) => {
+app.get('/candidats/:id', (req, res) => {
+  const query = `SELECT * FROM candidats WHERE idListeElec = '${req.params.id}'`;
+  db.query(query, (err, result) => {
+    if (err) {
+      res.status(500).send(err);
+      console.log(err);
+    } else {
+      res.status(200).json({
+        candidats: result,
+      });
+    }
+  });
+});
+
+app.get('/candidats', (req, res) => {
   const query = `SELECT * FROM candidats`;
   db.query(query, (err, result) => {
     if (err) {
@@ -180,8 +188,8 @@ app.get('/getcandidats', (req, res) => {
   });
 });
 
-app.get('/checkVote', (req, res) => {
-  const query = `SELECT * FROM vote WHERE idUser = '${req.user.id}'`;
+app.post('/checkVote', (req, res) => {
+  const query = `SELECT * FROM voteListe WHERE idUser = '${req.user.id}' and idListe = '${req.body.idListeElec}'`;
   db.query(query, (err, result) => {
     if (err) {
       res.status(500).send(err);
@@ -195,7 +203,7 @@ app.get('/checkVote', (req, res) => {
 });
 
 app.post('/vote', (req, res) => {
-  const query = `INSERT INTO vote (idUser, idCandidat) VALUES ('${req.user.id}', '${req.body.idCandidat}')`;
+  const query = `INSERT INTO voteListe (idUser, idCandidat, idListe) VALUES ('${req.user.id}', '${req.body.idCandidat}', '${req.body.idListeElec}')`;
   db.query(query, (err, result) => {
     if (err) {
       res.status(500).send(err);
@@ -282,6 +290,63 @@ app.post('/voteSondage/:id', (req, res) => {
     } else {
       res.status(200).json({
         vote: result,
+      });
+    }
+  });
+});
+
+app.get('/listes', (req, res) => {
+  const query = `SELECT * FROM listeElectorale`;
+  db.query(query, (err, result) => {
+    if (err) {
+      res.status(500).send(err);
+      console.log(err);
+    } else {
+      res.status(200).json({
+        listes: result,
+      });
+    }
+  });
+});
+
+app.post('/adminliste', (req, res) => {
+  const { pass } = req.body;
+  if (pass === 'admin') {
+    res.status(200).json({
+      res: true,
+    });
+  } else {
+    res.status(200).json({
+      res: false,
+    });
+  }
+});
+
+app.post('/creerListe', (req, res) => {
+  const { titre } = req.body;
+  const query = `INSERT INTO listeElectorale (nomListe) VALUES ('${titre}')`;
+  db.query(query, (err, result) => {
+    if (err) {
+      res.status(500).send(err);
+      console.log(err);
+    } else {
+      res.status(200).json({
+        liste: result,
+      });
+    }
+  });
+});
+
+app.post('/creerCandidat', (req, res) => {
+  const { nom, prenom, idListeElec, photo, parti } = req.body;
+  const query = `INSERT INTO candidats (nomC, prenomC, idListeElec,photo,partiPolitique) VALUES ('${nom}', '${prenom}', '${idListeElec}','${photo}','${parti}')`;
+  db.query(query, (err, result) => {
+    if (err) {
+      res.status(500).send(err);
+      console.log(err);
+    } else {
+      res.status(200).json({
+        candidat: result,
       });
     }
   });

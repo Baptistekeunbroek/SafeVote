@@ -27,5 +27,7 @@ module.exports = {
     'react/jsx-props-no-spreading': 'off',
     'object-shorthand': 'off',
     'operator-linebreak': 'off',
+    'prefer-arrow-callback': 'off',
+    'import/no-extraneous-dependencies': 'off',
   },
 };

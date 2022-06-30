@@ -1,5 +1,4 @@
-import axios from 'axios';
-import { useState, useEffect, React } from 'react';
+import { useState, React } from 'react';
 import { StepChoix } from './stepsForm/stepChoix';
 import { StepConfirmation } from './stepsForm/stepConfirmation';
 import { StepResultat } from './stepsForm/stepResultat';
@@ -11,26 +10,16 @@ export function MultiStepVote({ candidats }) {
   const [stepActuel, setStepActuel] = useState(0);
   const [vote, setVote] = useState('');
 
-  useEffect(() => {
-    axios
-      .get('http://localhost:5000/checkVote', {
-        withCredentials: true,
-      })
-      .then((res) => {
-        if (res.data.vote.length > 0) {
-          setStepActuel(3);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-
   const changeState = (e) => {
     setStepActuel(e);
   };
   const changeVote = (e) => {
-    setVote(candidats[e - 1]);
+    for (let i = 0; i < candidats.length; i += 1) {
+      if (candidats[i].idCandidat === e * 1) {
+        setVote(candidats[i]);
+        break;
+      }
+    }
   };
 
   const steps = [

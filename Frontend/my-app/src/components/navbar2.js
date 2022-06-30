@@ -3,7 +3,6 @@ import { Link, useLocation } from 'react-router-dom';
 
 export function Navbar2() {
   const location = useLocation();
-  console.log(location);
   if (
     location.pathname === '/' ||
     location.pathname === '/login' ||
@@ -25,7 +24,7 @@ export function Navbar2() {
             Sondage
           </button>
         </Link>
-        <Link to="/candidats">
+        <Link to="/listes">
           <button className="button-31user2" type="button">
             Voter
           </button>

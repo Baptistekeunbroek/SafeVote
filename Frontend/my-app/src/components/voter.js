@@ -1,16 +1,37 @@
 import axios from 'axios';
 import { useEffect, useState, React } from 'react';
+import { useLocation } from 'react-router-dom';
 import { MultiStepVote } from './multiStep';
 import './voter.css';
 
-export function Voter({ candidats }) {
+export function Voter() {
+  const location = useLocation();
   const [vote, setVote] = useState(true);
+  const idListe = useLocation().pathname.split('/').pop();
+  const [candidats, setCandidats] = useState([]);
 
   useEffect(() => {
     axios
-      .get('http://localhost:5000/checkVote', {
+      .get(`http://localhost:5000${location.pathname}`, {
         withCredentials: true,
       })
+      .then((res) => {
+        setCandidats(res.data.candidats);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  useEffect(() => {
+    axios
+      .post(
+        'http://localhost:5000/checkVote',
+        { idListeElec: idListe },
+        {
+          withCredentials: true,
+        }
+      )
       .then((res) => {
         if (res.data.vote.length > 0) {
           setVote(true);

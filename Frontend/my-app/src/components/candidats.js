@@ -1,10 +1,11 @@
 import axios from 'axios';
 import { useState, useEffect, React } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 import './candidats.css';
 import { Voter } from './voter';
 
 export function Candidats() {
+  const location = useLocation();
   const [candidats, setCandidats] = useState([]);
   const navigate = useNavigate();
 
@@ -25,7 +26,7 @@ export function Candidats() {
 
   useEffect(() => {
     axios
-      .get('http://localhost:5000/getcandidats', {
+      .get(`http://localhost:5000${location.pathname}`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -37,7 +38,16 @@ export function Candidats() {
   }, []);
 
   if (candidats.length === 0) {
-    return <div>Loading...</div>;
+    return (
+      <div>
+        <h1>Il n'y a aucun candidat dans cette liste !</h1>
+        <Link to="/listes">
+          <button type="button" className="button-31user">
+            Retourner aux listes
+          </button>
+        </Link>
+      </div>
+    );
   }
 
   return (
@@ -61,7 +71,7 @@ export function Candidats() {
         ))}
       </div>
 
-      <Voter candidats={candidats} />
+      <Voter />
     </div>
   );
 }

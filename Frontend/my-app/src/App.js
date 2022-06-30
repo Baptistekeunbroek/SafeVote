@@ -11,6 +11,9 @@ import { CreerSondage } from './components/sondage/creerSondage';
 import { SondageSpec } from './components/sondage/sondageSpec';
 import logo from './icons/logo.png';
 import { Navbar2 } from './components/navbar2';
+import { Listes } from './components/listes';
+import { AdminListe } from './components/adminListe';
+import { CreerListeCandidat } from './components/creerListeCandidat';
 
 import './App.css';
 
@@ -88,11 +91,17 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/userinfo" element={<UserInfo />} />
-          <Route path="/candidats" element={<Candidats />} />
+          <Route path="/candidats/:id" element={<Candidats />} />
           <Route path="/about" element={<About />} />
           <Route path="/sondage" element={<Sondage />} />
           <Route path="/sondage/creer" element={<CreerSondage />} />
           <Route path="/sondage/:id" element={<SondageSpec />} />
+          <Route path="/listes" element={<Listes />} />
+          <Route path="/adminliste" element={<AdminListe />} />
+          <Route
+            path="/adminliste/creerlistecandidat"
+            element={<CreerListeCandidat />}
+          />
         </Routes>
         <Footer />
       </Router>

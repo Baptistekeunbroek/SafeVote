@@ -1,0 +1,16 @@
+.flexRowEven {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.m {
+  margin: 3px;
+}
+.p {
+  padding: 20px;
+}
+
+.pForm {
+  padding: 0;
+  margin: 0;
+}

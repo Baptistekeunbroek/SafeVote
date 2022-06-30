@@ -11,27 +11,47 @@ export function CreerSondage() {
     titre: Yup.string()
       .required('Un titre est requis')
       .min(1, 'Le titre fait au moins 1 caractère')
-      .max(60, 'Le titre fait ne doit pas faire plus de 60 caractères'),
+      .max(60, 'Le titre fait ne doit pas faire plus de 60 caractères')
+      .matches(
+        /^[A-Za-z0-9\s]+$/,
+        'Le titre ne peuvent contenir que des lettres, des espaces ou des chiffres !'
+      ),
     description: Yup.string()
       .required('Une description est requise')
       .min(1, 'La description fait au moins 1 caractère')
-      .max(60, 'La description ne doit pas faire plus de 500 caractères'),
+      .max(60, 'La description ne doit pas faire plus de 500 caractères')
+      .matches(
+        /^[A-Za-z0-9\s]+$/,
+        'La descritpion ne peut contenir que des lettres, des espaces ou des chiffres !'
+      ),
     option1: Yup.string()
       .required('La première option est requise')
       .min(1, 'La première option fait au moins 1 caractère')
-      .max(60, 'La première option ne doit pas faire plus de 100 caractères'),
+      .max(60, 'La première option ne doit pas faire plus de 100 caractères')
+      .matches(
+        /^[A-Za-z0-9\s]+$/,
+        'Les options ne peuvent contenir que  des lettres, des espaces ou des chiffres !'
+      ),
     option2: Yup.string()
       .required('La seconde option est requise')
       .min(1, 'La seconde option fait au moins 1 caractère')
-      .max(60, 'La seconde option ne doit pas faire plus de 100 caractères'),
-    option3: Yup.string().max(
-      60,
-      'La troisième option ne doit pas faire plus de 100 caractères'
-    ),
-    option4: Yup.string().max(
-      60,
-      'La troisième option ne doit pas faire plus de 100 caractères'
-    ),
+      .max(60, 'La seconde option ne doit pas faire plus de 100 caractères')
+      .matches(
+        /^[A-Za-z0-9\s]+$/,
+        'Les options ne peuvent contenir que  des lettres, des espaces ou des chiffres !'
+      ),
+    option3: Yup.string()
+      .max(60, 'La troisième option ne doit pas faire plus de 100 caractères')
+      .matches(
+        /^[A-Za-z0-9\s]+$/,
+        'Les options ne peuvent contenir que  des lettres, des espaces ou des chiffres !'
+      ),
+    option4: Yup.string()
+      .max(60, 'La troisième option ne doit pas faire plus de 100 caractères')
+      .matches(
+        /^[A-Za-z0-9\s]+$/,
+        'Les options ne peuvent contenir que  des lettres, des espaces ou des chiffres !'
+      ),
   });
 
   const {

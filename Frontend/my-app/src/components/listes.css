@@ -1,0 +1,54 @@
+.ListesBig {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.Listes {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Liste {
+  background-color: #006d77;
+  width: 30vw;
+  color: #e2f4f6;
+  padding: 30px;
+  min-width: 250px;
+  text-decoration: none;
+  margin-bottom: 5vh;
+  border-radius: 10px;
+}
+
+.titreListe {
+  padding: 0;
+  margin: 0;
+}
+
+.candidatPhotoPetit {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+  object-fit: cover;
+}
+.fontBeau {
+  background-color: #006d77;
+  width: 15%;
+}
+.dispalyNone {
+  display: none;
+}
+
+.css-1dm1o0z-MuiButtonBase-root-MuiFab-root {
+  background-color: #006d77 !important;
+}
+.addButton {
+  position: absolute;
+  top: 20vh;
+  right: 2%;
+}
