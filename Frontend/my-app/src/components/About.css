@@ -3,6 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
 }
 .MuiBox-root {
   margin: 20px;

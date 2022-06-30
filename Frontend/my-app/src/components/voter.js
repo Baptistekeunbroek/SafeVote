@@ -1,14 +1,30 @@
 import axios from 'axios';
 import { useEffect, useState, React } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { MultiStepVote } from './multiStep';
 import './voter.css';
 
 export function Voter() {
+  const navigate = useNavigate();
   const location = useLocation();
   const [vote, setVote] = useState(true);
   const idListe = useLocation().pathname.split('/').pop();
   const [candidats, setCandidats] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get('http://localhost:5000/checkAuthentication', {
+        withCredentials: true,
+      })
+      .then((res) => {
+        if (!res.data.auth) {
+          navigate('/login');
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []); // eslint-disable-line
 
   useEffect(() => {
     axios

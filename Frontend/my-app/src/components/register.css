@@ -38,6 +38,14 @@ input:focus {
   align-items: center;
 }
 
+.flexRowReg {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
 .flexColumn {
   display: flex;
   flex-direction: column;
@@ -95,9 +103,8 @@ input:focus {
 }
 
 .h1Register {
-  font-size: 50px;
+  font-size: calc(20px + 0.6vw);
   font-weight: bold;
-  margin-top: 50px;
   text-align: center;
   color: white;
 }

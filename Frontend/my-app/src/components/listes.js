@@ -1,13 +1,29 @@
 import { React, useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './listes.css';
 import AddIcon from '@mui/icons-material/Add';
 import Fab from '@mui/material/Fab';
 
 export function Listes() {
+  const navigate = useNavigate();
   const [listes, setListes] = useState([]);
   const [candidats, setCandidats] = useState([]);
+  useEffect(() => {
+    axios
+      .get('http://localhost:5000/checkAuthentication', {
+        withCredentials: true,
+      })
+      .then((res) => {
+        if (!res.data.auth) {
+          navigate('/login');
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []); // eslint-disable-line
+
   useEffect(() => {
     axios
       .get('http://localhost:5000/listes')

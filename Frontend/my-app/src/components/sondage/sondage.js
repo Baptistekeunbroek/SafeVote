@@ -1,10 +1,26 @@
 import { React, useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './sondage.css';
 
 export function Sondage() {
+  const navigate = useNavigate();
   const [sondages, setSondages] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get('http://localhost:5000/checkAuthentication', {
+        withCredentials: true,
+      })
+      .then((res) => {
+        if (!res.data.auth) {
+          navigate('/login');
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []); // eslint-disable-line
   useEffect(() => {
     axios
       .get('http://localhost:5000/getSondages')

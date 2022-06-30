@@ -96,7 +96,7 @@ export function Register() {
       <div className="register">
         <h1 className="h1Register">Créer un compte</h1>
         <form onSubmit={handleSubmit(onSubmit)} className="register">
-          <div className="flexRow">
+          <div className="flexRowReg">
             <select
               className="button-31"
               {...register('Genre', { required: true })}
