@@ -1,0 +1,38 @@
+.sondageList {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.sondageItem {
+  width: 30vw;
+  background-color: #006d77;
+  border-radius: 20px;
+  color: #e2f4f6;
+  text-decoration: none;
+  margin: 30px;
+}
+
+.descSondage {
+  width: 50%;
+}
+.sondageSpec {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.sondageBig {
+  width: 100%;
+}
+
+.oui {
+  background-color: green;
+}
+
+.non {
+  background-color: #006d77;
+}

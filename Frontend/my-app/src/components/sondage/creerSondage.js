@@ -19,9 +19,9 @@ export function CreerSondage() {
     description: Yup.string()
       .required('Une description est requise')
       .min(1, 'La description fait au moins 1 caractère')
-      .max(60, 'La description ne doit pas faire plus de 500 caractères')
+      .max(500, 'La description ne doit pas faire plus de 500 caractères')
       .matches(
-        /^[A-Za-z0-9\s]+$/,
+        /^[A-Za-z0-9,.\s]+$/,
         'La descritpion ne peut contenir que des lettres, des espaces ou des chiffres !'
       ),
     option1: Yup.string()

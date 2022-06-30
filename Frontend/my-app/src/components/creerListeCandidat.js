@@ -88,7 +88,6 @@ export function CreerListeCandidat() {
   }
 
   function onSubmitCandidat(dataForm) {
-    console.log(dataForm);
     creerCandidat(dataForm);
   }
   if (listes.length === 0) {

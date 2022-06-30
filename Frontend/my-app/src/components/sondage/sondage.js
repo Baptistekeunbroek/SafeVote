@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import './sondage.css';
 
 export function Sondage() {
   const [sondages, setSondages] = useState([]);
@@ -9,7 +10,6 @@ export function Sondage() {
       .get('http://localhost:5000/getSondages')
       .then((res) => {
         setSondages(res.data.sondages);
-        console.log(res.data.sondages);
       })
       .catch((err) => {
         console.log(err);
@@ -38,12 +38,14 @@ export function Sondage() {
         <p>Voici les sondages disponibles :</p>
         <div className="sondageList">
           {sondages.map((sondage) => (
-            <div className="sondageItem" key={sondage.idSondage}>
-              <Link to={`/sondage/${sondage.idSondage}`}>
-                <h2>{sondage.titre}</h2>
-                <p>{sondage.descr}</p>
-              </Link>
-            </div>
+            <Link
+              className="sondageItem"
+              key={sondage.idSondage}
+              to={`/sondage/${sondage.idSondage}`}
+            >
+              <h1>{sondage.titre}</h1>
+              <p>{sondage.descr}</p>
+            </Link>
           ))}
         </div>
         <Link to="/sondage/creer">

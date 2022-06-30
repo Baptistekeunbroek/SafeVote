@@ -38,7 +38,6 @@ export function Listes() {
   if (listes.length === 0 || candidats.length === 0) {
     return <div>Chargement...</div>;
   }
-  console.log(candidats);
   return (
     <div className="ListesBig">
       <h1>Listes</h1>

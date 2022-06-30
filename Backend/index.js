@@ -202,6 +202,20 @@ app.post('/checkVote', (req, res) => {
   });
 });
 
+app.get('/checkVoteSondage/:id', (req, res) => {
+  const query = `SELECT * FROM voteSondage WHERE idUser = '${req.user.id}' and idSondage = '${req.params.id}'`;
+  db.query(query, (err, result) => {
+    if (err) {
+      res.status(500).send(err);
+      console.log(err);
+    } else {
+      res.status(200).json({
+        vote: result,
+      });
+    }
+  });
+});
+
 app.post('/vote', (req, res) => {
   const query = `INSERT INTO voteListe (idUser, idCandidat, idListe) VALUES ('${req.user.id}', '${req.body.idCandidat}', '${req.body.idListeElec}')`;
   db.query(query, (err, result) => {
@@ -282,7 +296,7 @@ app.get('/getSondage/:id', (req, res) => {
 });
 
 app.post('/voteSondage/:id', (req, res) => {
-  const query = `INSERT INTO voteSondage (idUser, idSondage) VALUES ('${req.user.id}', '${req.params.id}')`;
+  const query = `INSERT INTO voteSondage (idUser, idSondage, choix) VALUES ('${req.user.id}', '${req.params.id}','${req.body.vote}')`;
   db.query(query, (err, result) => {
     if (err) {
       res.status(500).send(err);

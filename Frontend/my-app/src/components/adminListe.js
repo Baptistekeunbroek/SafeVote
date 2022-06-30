@@ -23,7 +23,6 @@ export function AdminListe() {
 
   useEffect(() => {
     if (checkAuthentication) {
-      console.log(checkAuthentication);
       navigate('/adminliste/creerlistecandidat');
     }
   }, [checkAuthentication]);
