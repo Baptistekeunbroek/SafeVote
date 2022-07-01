@@ -8,10 +8,7 @@ const MySQLStore = require('express-mysql-session')(session);
 const path = require('path');
 const app = express();
 const bcrypt = require('bcrypt');
-const nodemailer = require('nodemailer');
 const transporter = require('./config');
-const { mainModule } = require('process');
-const { appendFile } = require('fs');
 
 // Inintialisation de la bdd
 let options = {

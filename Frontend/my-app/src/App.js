@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import { React } from 'react';
-import { Register } from './components/register';
-import { Login } from './components/login';
-import { UserInfo } from './components/userInfo';
+import { Register } from './components/compte/register';
+import { Login } from './components/compte/login';
+import { UserInfo } from './components/compte/userInfo';
 import sample from './misc/videoBack.mp4';
-import { Candidats } from './components/candidats';
+import { Candidats } from './components/vote/candidats';
 import { About } from './components/about';
 import { CGU } from './components/cgu';
 import { Sondage } from './components/sondage/sondage';
@@ -12,9 +12,9 @@ import { CreerSondage } from './components/sondage/creerSondage';
 import { SondageSpec } from './components/sondage/sondageSpec';
 import logo from './icons/logo.png';
 import { Navbar2 } from './components/navbar2';
-import { Listes } from './components/listes';
-import { AdminListe } from './components/adminListe';
-import { CreerListeCandidat } from './components/creerListeCandidat';
+import { Listes } from './components/vote/listes';
+import { AdminListe } from './components/vote/adminListe';
+import { CreerListeCandidat } from './components/vote/creerListeCandidat';
 
 import './App.css';
 
