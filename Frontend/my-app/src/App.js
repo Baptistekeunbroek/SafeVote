@@ -6,6 +6,7 @@ import { UserInfo } from './components/userInfo';
 import sample from './misc/videoBack.mp4';
 import { Candidats } from './components/candidats';
 import { About } from './components/about';
+import { CGU } from './components/cgu';
 import { Sondage } from './components/sondage/sondage';
 import { CreerSondage } from './components/sondage/creerSondage';
 import { SondageSpec } from './components/sondage/sondageSpec';
@@ -71,9 +72,15 @@ function NavigationBar() {
 function Footer() {
   return (
     <div className="footer">
+
       <Link to="/about">
         <button type="button" className="button-31propos">
           À propos de nous
+        </button>
+      </Link>
+      <Link to="/cgu">
+        <button type="button" className="button-31propos">
+          Conditions Générales
         </button>
       </Link>
     </div>
@@ -84,25 +91,29 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <NavigationBar />
-        <Navbar2 />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/userinfo" element={<UserInfo />} />
-          <Route path="/candidats/:id" element={<Candidats />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/sondage" element={<Sondage />} />
-          <Route path="/sondage/creer" element={<CreerSondage />} />
-          <Route path="/sondage/:id" element={<SondageSpec />} />
-          <Route path="/listes" element={<Listes />} />
-          <Route path="/adminliste" element={<AdminListe />} />
-          <Route
-            path="/adminliste/creerlistecandidat"
-            element={<CreerListeCandidat />}
-          />
-        </Routes>
+        <div className='content'>
+          <NavigationBar />
+          <Navbar2 />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/userinfo" element={<UserInfo />} />
+            <Route path="/candidats/:id" element={<Candidats />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/cgu" element={<CGU />} />
+            <Route path="/sondage" element={<Sondage />} />
+            <Route path="/sondage/creer" element={<CreerSondage />} />
+            <Route path="/sondage/:id" element={<SondageSpec />} />
+            <Route path="/listes" element={<Listes />} />
+            <Route path="/adminliste" element={<AdminListe />} />
+            <Route
+              path="/adminliste/creerlistecandidat"
+              element={<CreerListeCandidat />}
+            />
+          </Routes>
+          <div className='push'></div>
+        </div>
         <Footer />
       </Router>
     </div>

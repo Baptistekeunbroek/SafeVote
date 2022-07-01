@@ -4,6 +4,7 @@ svg {
   margin: 3vh;
   color: white;
 }
+
 .App {
   text-align: center;
   align-items: center;
@@ -42,13 +43,16 @@ svg {
 }
 
 .footer {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   background-color: #006d77;
+  height: 70px;
+  width: 100%;
+
 }
+
 
 .logos {
   margin: 0;
@@ -105,4 +109,8 @@ svg {
   margin-bottom: 5px;
   margin-top: 5px;
   border-radius: 5px;
+}
+
+.content {
+  min-height: calc(100vh - 70px);
 }
