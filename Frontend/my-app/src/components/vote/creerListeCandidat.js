@@ -95,10 +95,9 @@ export function CreerListeCandidat() {
   }
   return (
     <div className="CreerListeCandidat">
-      <h1>Creer</h1>
       <div className="creer flexRowEven">
         <div className="creerListe">
-          <h1>Creer une liste</h1>
+          <h1>Créer une liste</h1>
           <form autoComplete="off" className="register p">
             <div className="flexColumn">
               <input

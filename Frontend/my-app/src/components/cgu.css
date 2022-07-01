@@ -2,11 +2,13 @@
     background-color: #c9e4e7;
     margin-left: 15px;
     margin-right: 15px;
-    margin-bottom: 100px;
+    border-radius: 10px;
 
 }
 
 
 .CGU p{
     text-align: justify;
+    margin-right: 15px;
+    margin-left: 15px;
 }
