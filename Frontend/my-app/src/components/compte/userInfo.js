@@ -60,11 +60,11 @@ export function UserInfo() {
       <div className="InfoBig">
         <div className="Info">
           <h1 className="connected">Vous êtes connecté à votre compte</h1>
-          <h3>
+          <p>
             Bonjour {genre} {prenom} {nom}{' '}
-          </h3>
-          <h3>Email : {email}</h3>
-          <h3>Numéro de téléphone : {tel}</h3>
+          </p>
+          <p>Email : {email}</p>
+          <p>Numéro de téléphone : {tel}</p>
           <button
             type="button"
             className="button-31user width10"

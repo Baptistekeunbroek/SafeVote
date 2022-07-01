@@ -1,6 +1,7 @@
 import { React, useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import './adminListe.css';
 
 export function AdminListe() {
   const navigate = useNavigate();
@@ -27,25 +28,29 @@ export function AdminListe() {
     }
   }, [checkAuthentication]);
   return (
-    <div>
+    <div className='adminliste'>
+      <div className='admin'>
       <h1>Admin</h1>
 
       {checkAuthentication ? (
         <h1>Authentification réussie</h1>
       ) : (
         <>
+        <div className='mdp'>
           <input
-            className="inputRegister fontBeau"
+            className="input"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="Mot de passe administrateur"
+            placeholder="Mot de passe..."
           />
           <button type="button" className="button-31user" onClick={testPass}>
             Entrer
           </button>
+          </div>
         </>
       )}
+      </div>
     </div>
   );
 }
