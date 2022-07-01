@@ -33,6 +33,7 @@ Ensuite remplir le dossier configTemplate en remplaçant le 'user' et 'password'
   user: '', // votre adresse mail
   pass: '', // votre mot de passe
 ```
+Et le renommer config.js
 
 Puis
 ```bash
