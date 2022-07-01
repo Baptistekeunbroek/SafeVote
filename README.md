@@ -28,20 +28,19 @@ Dans un terminal dans le dossier racine, faire:
 ```bash
   npm install
 ```
-Ensuite remplir le dossier configTemplate en remplaçant le 'user' et 'password' par vos informations.
-```bash
-  user: '', // votre adresse mail
-  pass: '', // votre mot de passe
-```
 
 Puis
 ```bash
   npm installDependencies
 ```
-Et enfin
+Ensuite remplir le ficheir configTemplate.js qui ce situe dans le dossier backend en remplaçant le 'user' et 'password' par vos informations.
+```bash
+  user: '', // votre adresse mail
+  pass: '', // votre mot de passe
+```
+Et le renommer config.js
+
+Enfin
 ```bash
   npm start
 ```
-
-
-
