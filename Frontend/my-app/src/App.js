@@ -72,7 +72,6 @@ function NavigationBar() {
 function Footer() {
   return (
     <div className="footer">
-
       <Link to="/about">
         <button type="button" className="button-31propos">
           À propos de nous
@@ -91,7 +90,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <div className='content'>
+        <div className="content">
           <NavigationBar />
           <Navbar2 />
           <Routes>
@@ -112,7 +111,7 @@ function App() {
               element={<CreerListeCandidat />}
             />
           </Routes>
-          <div className='push'></div>
+          <div className="push" />
         </div>
         <Footer />
       </Router>

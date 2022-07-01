@@ -43,14 +43,76 @@ CREATE TABLE sondage(
     userID int
 );
 
+insert into sondage(titre,descr,option1,option2,option3,option4) values ('Sondage politique',"S'il y avait des élections générales demain, pour quel parti voteriez-vous?",'droite','centre','gauche','abstention');
+
 drop table if exists voteListe;
 
 CREATE TABLE voteListe(idUser INT, idCandidat INT, idListe int);
 
+drop table if exists voteSondage;
+
 create table voteSondage(idUser int, idSondage int, choix int);
 
-INSERT INTO listeElectorale(idListe, nomListe) VALUES (1,'Élections présidentielles');
+INSERT INTO
+    listeElectorale(idListe, nomListe)
+VALUES
+    (1, 'Élections présidentielles');
 
+INSERT INTO
+    listeElectorale(idListe, nomListe)
+VALUES
+    (2, 'Le meilleur étudiant');
+
+INSERT INTO
+    candidats(
+        nomC,
+        prenomC,
+        partiPolitique,
+        photo,
+        idListeElec
+    )
+VALUES
+    (
+        'Le Corvec',
+        'Malo',
+        'Etudiant',
+        'https://png.pngtree.com/png-vector/20190710/ourlarge/pngtree-user-vector-avatar-png-image_1541962.jpg',
+        2
+    );
+
+INSERT INTO
+    candidats(
+        nomC,
+        prenomC,
+        partiPolitique,
+        photo,
+        idListeElec
+    )
+VALUES
+    (
+        'Keunebroek',
+        'Baptiste',
+        'Etudiant',
+        'https://png.pngtree.com/png-vector/20190710/ourlarge/pngtree-user-vector-avatar-png-image_1541962.jpg',
+        2
+    );
+
+INSERT INTO
+    candidats(
+        nomC,
+        prenomC,
+        partiPolitique,
+        photo,
+        idListeElec
+    )
+VALUES
+    (
+        'Simonet',
+        'Romane',
+        'Etudiant',
+        'https://png.pngtree.com/png-vector/20190710/ourlarge/pngtree-user-vector-avatar-png-image_1541962.jpg',
+        2
+    );
 
 INSERT INTO
     utilisateurs (

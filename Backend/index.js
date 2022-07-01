@@ -320,6 +320,20 @@ app.get('/listes', (req, res) => {
   });
 });
 
+app.get('/listes/:id', (req, res) => {
+  const query = `SELECT * FROM listeElectorale WHERE idListe = '${req.params.id}'`;
+  db.query(query, (err, result) => {
+    if (err) {
+      res.status(500).send(err);
+      console.log(err);
+    } else {
+      res.status(200).json({
+        liste: result,
+      });
+    }
+  });
+});
+
 app.post('/adminliste', (req, res) => {
   const { pass } = req.body;
   if (pass === 'admin') {

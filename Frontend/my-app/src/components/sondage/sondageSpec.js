@@ -126,8 +126,8 @@ export function SondageSpec() {
             <p>{choixReponse()}</p>
           </>
         ) : (
-          <>
-            <div className="flexRow">
+          <div className="bouttonSondage">
+            <div className="spaceMilieu">
               <button
                 type="button"
                 onClick={() => bouttonClick(1)}
@@ -142,8 +142,6 @@ export function SondageSpec() {
               >
                 {sondage.option2}
               </button>
-            </div>
-            <div className="flexRow">
               {sondage.option3 !== 'undefined' && (
                 <button
                   type="button"
@@ -170,7 +168,7 @@ export function SondageSpec() {
             >
               Soumettre
             </button>
-          </>
+          </div>
         )}
       </div>
     </div>

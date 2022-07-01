@@ -7,7 +7,9 @@ import { Voter } from './voter';
 export function Candidats() {
   const location = useLocation();
   const [candidats, setCandidats] = useState([]);
+  const [liste, setListe] = useState([]);
   const navigate = useNavigate();
+  const idListe = useLocation().pathname.split('/').pop();
 
   useEffect(() => {
     axios
@@ -37,6 +39,19 @@ export function Candidats() {
       });
   }, []);
 
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/listes/${idListe}`, {
+        withCredentials: true,
+      })
+      .then((res) => {
+        setListe(res.data.liste);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   if (candidats.length === 0) {
     return (
       <div>
@@ -49,10 +64,14 @@ export function Candidats() {
       </div>
     );
   }
+  if (liste.length === 0) {
+    return <div>Chargement...</div>;
+  }
 
   return (
     <div className="candidats">
       <h1 className="h1Candidats">Liste des candidats</h1>
+      <h2 className="h1Candidats">{liste[0].nomListe}</h2>
       <div className="candidatsTable">
         {candidats.map((candidat) => (
           <div className="candidat" key={candidat.idCandidat}>

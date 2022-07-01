@@ -38,3 +38,19 @@
 .non {
   background-color: #006d77;
 }
+
+.bouttonSondage {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.spaceMilieu {
+  width: 300px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}

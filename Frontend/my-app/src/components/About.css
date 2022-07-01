@@ -7,4 +7,6 @@
 }
 .MuiBox-root {
   margin: 20px;
+  border: solid #006d77 1px;
+  background-color: #c9e4e7;
 }
