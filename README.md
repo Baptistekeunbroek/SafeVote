@@ -33,7 +33,7 @@ Puis
 ```bash
   npm installDependencies
 ```
-Ensuite remplir le dossier configTemplate en remplaçant le 'user' et 'password' par vos informations.
+Ensuite remplir le ficheir configTemplate.js qui ce situe dans le dossier backend en remplaçant le 'user' et 'password' par vos informations.
 ```bash
   user: '', // votre adresse mail
   pass: '', // votre mot de passe
