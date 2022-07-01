@@ -74,3 +74,11 @@
   margin: 30px;
   margin-top: 30px;
 }
+
+.resultatSondageItem {
+  border: solid black 1px;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: #eff3f3;
+}

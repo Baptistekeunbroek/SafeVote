@@ -334,6 +334,20 @@ app.get('/listes/:id', (req, res) => {
   });
 });
 
+app.get('/getResultatsondage/:id', (req, res) => {
+  const query = `SELECT * FROM voteSondage WHERE idSondage = '${req.params.id}'`;
+  db.query(query, (err, result) => {
+    if (err) {
+      res.status(500).send(err);
+      console.log(err);
+    } else {
+      res.status(200).json({
+        res: result,
+      });
+    }
+  });
+});
+
 app.post('/adminliste', (req, res) => {
   const { pass } = req.body;
   if (pass === 'admin') {

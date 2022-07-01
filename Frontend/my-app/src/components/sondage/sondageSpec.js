@@ -12,6 +12,12 @@ export function SondageSpec() {
     { active: 'non' },
     { active: 'non' },
   ]);
+  const [resultatSondage, setResultatSondage] = useState([
+    { prct: 0 },
+    { prct: 0 },
+    { prct: 0 },
+    { prct: 0 },
+  ]);
   const { id } = useParams();
 
   useEffect(() => {
@@ -24,6 +30,29 @@ export function SondageSpec() {
         console.log(err);
       });
   }, []);
+  function calcResultats(resultat) {
+    const compteResultats = [0, 0, 0, 0];
+    for (let i = 0; i < resultat.length; i += 1) {
+      if (resultat[i].choix === 1) {
+        compteResultats[0] += 1;
+      }
+      if (resultat[i].choix === 2) {
+        compteResultats[1] += 1;
+      }
+      if (resultat[i].choix === 3) {
+        compteResultats[2] += 1;
+      }
+      if (resultat[i].choix === 4) {
+        compteResultats[3] += 1;
+      }
+    }
+    setResultatSondage([
+      { prct: (compteResultats[0] / resultat.length) * 100 },
+      { prct: (compteResultats[1] / resultat.length) * 100 },
+      { prct: (compteResultats[2] / resultat.length) * 100 },
+      { prct: (compteResultats[3] / resultat.length) * 100 },
+    ]);
+  }
   useEffect(() => {
     axios
       .get(`http://localhost:5000/checkVoteSondage/${id}`, {
@@ -31,6 +60,17 @@ export function SondageSpec() {
       })
       .then((res) => {
         setVote(res.data.vote);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [voteSondage]);
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/getResultatsondage/${id}`)
+      .then((res) => {
+        calcResultats(res.data.res);
       })
       .catch((err) => {
         console.log(err);
@@ -114,7 +154,6 @@ export function SondageSpec() {
     }
     return 'Aucun choix';
   }
-
   return (
     <div className="sondageBig">
       <div className="sondageSpec">
@@ -124,6 +163,25 @@ export function SondageSpec() {
           <>
             <p>Vous avez deja voté pour l'option {vote[0].choix} :</p>
             <p>{choixReponse()}</p>
+            <h2>Résultats : </h2>
+            <div className="spaceMilieu">
+              <div className="resultatSondageItem">
+                <p>{sondage.option1}</p>
+                <p>{resultatSondage[0].prct}%</p>
+              </div>
+              <div className="resultatSondageItem">
+                <p>{sondage.option2}</p>
+                <p>{resultatSondage[1].prct}%</p>
+              </div>
+              <div className="resultatSondageItem">
+                <p>{sondage.option3}</p>
+                <p>{resultatSondage[2].prct}%</p>
+              </div>
+              <div className="resultatSondageItem">
+                <p>{sondage.option4}</p>
+                <p>{resultatSondage[3].prct}%</p>
+              </div>
+            </div>
           </>
         ) : (
           <div className="bouttonSondage">
