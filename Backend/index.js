@@ -48,6 +48,17 @@ app.use(passport.session());
 app.use(passport.authenticate('session'));
 initializePassport(passport, db);
 
+function getAge(dateString) {
+  var today = new Date();
+  var birthDate = new Date(dateString);
+  var age = today.getFullYear() - birthDate.getFullYear();
+  var m = today.getMonth() - birthDate.getMonth();
+  if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+    age--;
+  }
+  return age;
+}
+
 app.post('/register', (req, res) => {
   let verif = false;
   const isAlreadyInDB = 'SELECT * FROM utilisateurs';
@@ -66,21 +77,28 @@ app.post('/register', (req, res) => {
           res.send('Tel');
           break;
         }
+        console.log(getAge(req.body.dateDeNaissance));
+        if (getAge(req.body.dateDeNaissance) < 18) {
+          verif = true;
+          res.send('Age');
+          break;
+        }
       }
-      if (!verif) {
-        const { email, password, nom, prenom, dateDeNaissance, tel, genre } =
-          req.body;
-        const HashedPassword = bcrypt.hashSync(password, 10);
-        const query = `INSERT INTO utilisateurs (email, password, nom, prenom, dateDeNaissance, genre, tel) VALUES ('${email}', '${HashedPassword}','${nom}','${prenom}','${dateDeNaissance}','${genre}','${tel}')`;
-        db.query(query, (err, result) => {
-          if (err) {
-            res.status(500).send(err);
-            console.log(err);
-          } else {
-            res.send('Inscription réussie');
-          }
-        });
-      }
+      if (res)
+        if (!verif) {
+          const { email, password, nom, prenom, dateDeNaissance, tel, genre } =
+            req.body;
+          const HashedPassword = bcrypt.hashSync(password, 10);
+          const query = `INSERT INTO utilisateurs (email, password, nom, prenom, dateDeNaissance, genre, tel) VALUES ('${email}', '${HashedPassword}','${nom}','${prenom}','${dateDeNaissance}','${genre}','${tel}')`;
+          db.query(query, (err, result) => {
+            if (err) {
+              res.status(500).send(err);
+              console.log(err);
+            } else {
+              res.send('Inscription réussie');
+            }
+          });
+        }
     }
   });
 });

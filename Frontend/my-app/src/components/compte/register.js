@@ -29,9 +29,8 @@ export function Register() {
       .required('Un email est requis')
       .email('Email invalide')
       .max(50, 'Le mail ne doit pas faire plus de 50 caractères'),
-    Tel: Yup.string()
-      .required('Le téléphone est requis')
-      .matches(/^\d{10}$/, 'Le numéro de téléphone doit contenir 10 chiffres'),
+    Tel: Yup.string().required('Le téléphone est requis'),
+    // .matches(/^\d{10}$/, 'Le numéro de téléphone doit contenir 10 chiffres'),
   });
 
   const {
@@ -61,18 +60,21 @@ export function Register() {
         genre: data.Genre,
       })
       .then((res) => {
-        setNaissanceReg(null);
-        setDatesend(null);
         if (res.data === 'Email') {
           alert('Email déjà utilisé');
         }
         if (res.data === 'Tel') {
           alert('Numéro de téléphone déjà utilisé');
         }
+        if (res.data === 'Age') {
+          alert('Vous devez avoir plus de 18 ans');
+          setNaissanceReg(null);
+          setDatesend(null);
+        }
         if (res.data === 'Inscription réussie') {
           alert('Inscription réussie');
+          reset();
         }
-        reset();
       });
   }
   function onSubmit(dataForm) {
