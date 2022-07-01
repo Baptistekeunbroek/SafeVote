@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState, React } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { MultiStepVote } from './multiStep';
+import { MultiStepVote } from '../stepsForm/multiStep';
 import './voter.css';
 
 export function Voter() {

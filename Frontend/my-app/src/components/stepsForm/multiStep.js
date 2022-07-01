@@ -1,9 +1,9 @@
 import { useState, React } from 'react';
-import { StepChoix } from './stepsForm/stepChoix';
-import { StepConfirmation } from './stepsForm/stepConfirmation';
-import { StepResultat } from './stepsForm/stepResultat';
-import { StepVote } from './stepsForm/stepVote';
-import { Progression } from './stepsForm/progression';
+import { StepChoix } from './stepChoix';
+import { StepConfirmation } from './stepConfirmation';
+import { StepResultat } from './stepResultat';
+import { StepVote } from './stepVote';
+import { Progression } from './progression';
 import './multiStep.css';
 
 export function MultiStepVote({ candidats }) {
