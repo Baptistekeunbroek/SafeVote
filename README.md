@@ -29,6 +29,10 @@ Dans un terminal dans le dossier racine, faire:
   npm install
 ```
 Ensuite remplir le dossier configTemplate en remplaçant le 'user' et 'password' par vos informations.
+```bash
+  user: '', // votre adresse mail
+  pass: '', // votre mot de passe
+```
 
 Puis
 ```bash
