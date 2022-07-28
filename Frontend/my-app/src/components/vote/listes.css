@@ -3,14 +3,21 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+  align-items: center;
 }
 
 .Listes {
-  width: 100%;
+  width: 40%;
+  min-width: 300px;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  background-color: #c9e4e7;
+  border-radius: 30px;
+  padding: 30px;
+  margin: 30px;
+  margin-top: 30px;
 }
 
 .Liste {

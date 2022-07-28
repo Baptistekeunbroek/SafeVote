@@ -96,7 +96,7 @@ export function CreerSondage() {
     <div className="sondageBig">
       <div className="sondage">
         <h1>Creer un sondage</h1>
-        <form onSubmit={handleSubmit(onSubmit)} className="register">
+        <form onSubmit={handleSubmit(onSubmit)} className="register padd">
           <div className="flexRow">
             <div className="flexColumn">
               <input

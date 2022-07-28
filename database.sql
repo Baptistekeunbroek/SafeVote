@@ -107,10 +107,10 @@ INSERT INTO
     )
 VALUES
     (
-        'Simonet',
-        'Romane',
-        'Etudiant',
-        'https://png.pngtree.com/png-vector/20190710/ourlarge/pngtree-user-vector-avatar-png-image_1541962.jpg',
+        'Blanc',
+        'Vote',
+        '',
+        'https://www.lutece-papierpeint.com/wp-content/uploads/2019/04/51145606C.jpg',
         2
     );
 
@@ -357,6 +357,23 @@ VALUES
         'Nicolas',
         'DLR',
         'https://www.debout-la-france.fr/sites/default/files/membre/nda.jpg',
+        1
+    );
+    
+INSERT INTO
+    candidats(
+        nomC,
+        prenomC,
+        partiPolitique,
+        photo,
+        idListeElec
+    )
+VALUES
+    (
+        'Blanc',
+        'Vote',
+        ' ',
+        'https://www.lutece-papierpeint.com/wp-content/uploads/2019/04/51145606C.jpg',
         1
     );
 

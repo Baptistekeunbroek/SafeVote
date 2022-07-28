@@ -6,7 +6,15 @@
   flex-wrap: wrap;
 }
 .MuiBox-root {
-  margin: 20px;
+  margin: 0;
   border: solid #006d77 1px;
   background-color: #c9e4e7;
+}
+
+.css-15jt3v6-MuiLinearProgress-root {
+  width: 100% !important;
+}
+
+.padd {
+  padding: 10px;
 }
