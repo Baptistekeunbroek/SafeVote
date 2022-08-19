@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { ENDPOINT } from '../config';
 
 export function Register() {
   const [naissanceReg, setNaissanceReg] = useState(null);
@@ -50,7 +51,7 @@ export function Register() {
       return;
     }
     axios
-      .post('http://localhost:5000/register', {
+      .post(`${ENDPOINT}/register`, {
         email: data.Email,
         nom: data.Nom,
         prenom: data.Prenom,

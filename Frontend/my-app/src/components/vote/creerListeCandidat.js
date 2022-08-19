@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
 import './creerListeCandidat.css';
+import { ENDPOINT } from '../config';
 
 export function CreerListeCandidat() {
   const [photo, setPhoto] = useState('');
@@ -27,7 +28,7 @@ export function CreerListeCandidat() {
 
   useEffect(() => {
     axios
-      .get('http://localhost:5000/listes')
+      .get(`${ENDPOINT}/listes`)
       .then((res) => {
         setListes(res.data.listes);
       })
@@ -53,7 +54,7 @@ export function CreerListeCandidat() {
       return;
     }
     axios
-      .post('http://localhost:5000/creerListe', {
+      .post(`${ENDPOINT}/creerListe`, {
         titre: titre,
       })
       .then(() => {
@@ -68,7 +69,7 @@ export function CreerListeCandidat() {
   }
   function creerCandidat(data) {
     axios
-      .post('http://localhost:5000/creerCandidat', {
+      .post(`${ENDPOINT}/creerCandidat`, {
         idListeElec: data.liste,
         nom: data.nom,
         prenom: data.prenom,

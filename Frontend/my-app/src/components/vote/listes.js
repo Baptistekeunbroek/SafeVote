@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import './listes.css';
 import AddIcon from '@mui/icons-material/Add';
 import Fab from '@mui/material/Fab';
+import { ENDPOINT } from '../config';
 
 export function Listes() {
   const navigate = useNavigate();
@@ -11,7 +12,7 @@ export function Listes() {
   const [candidats, setCandidats] = useState([]);
   useEffect(() => {
     axios
-      .get('http://localhost:5000/checkAuthentication', {
+      .get(`${ENDPOINT}/checkAuthentication`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -26,7 +27,7 @@ export function Listes() {
 
   useEffect(() => {
     axios
-      .get('http://localhost:5000/listes')
+      .get(`${ENDPOINT}/listes`)
       .then((res) => {
         setListes(res.data.listes);
       })
@@ -41,7 +42,7 @@ export function Listes() {
     }
     for (let i = 0; i < listes.length; i += 1) {
       axios
-        .get('http://localhost:5000/candidats')
+        .get(`${ENDPOINT}/candidats`)
         .then((res) => {
           setCandidats(res.data.candidats);
         })

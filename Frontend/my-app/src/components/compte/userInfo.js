@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useState, useEffect, React } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './userInfo.css';
+import { ENDPOINT } from '../config';
 
 export function UserInfo() {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ export function UserInfo() {
 
   useEffect(() => {
     axios
-      .get('http://localhost:5000/checkAuthentication', {
+      .get(`${ENDPOINT}/checkAuthentication`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -28,7 +29,7 @@ export function UserInfo() {
 
   useEffect(() => {
     axios
-      .get('http://localhost:5000/getUser', {
+      .get(`${ENDPOINT}/getUser`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -44,7 +45,7 @@ export function UserInfo() {
   }, []);
 
   const logout = () => {
-    axios.post('http://localhost:5000/logout', {}, { withCredentials: true });
+    axios.post(`${ENDPOINT}/logout`, {}, { withCredentials: true });
 
     navigate('/login');
   };

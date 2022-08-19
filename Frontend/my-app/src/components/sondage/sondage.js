@@ -2,6 +2,7 @@ import { React, useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './sondage.css';
+import { ENDPOINT } from '../config';
 
 export function Sondage() {
   const navigate = useNavigate();
@@ -9,7 +10,7 @@ export function Sondage() {
 
   useEffect(() => {
     axios
-      .get('http://localhost:5000/checkAuthentication', {
+      .get(`${ENDPOINT}/checkAuthentication`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -23,7 +24,7 @@ export function Sondage() {
   }, []); // eslint-disable-line
   useEffect(() => {
     axios
-      .get('http://localhost:5000/getSondages')
+      .get(`${ENDPOINT}/getSondages`)
       .then((res) => {
         setSondages(res.data.sondages);
       })

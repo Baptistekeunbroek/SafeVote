@@ -2,6 +2,7 @@ import { React, useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './adminListe.css';
+import { ENDPOINT } from '../config';
 
 export function AdminListe() {
   const navigate = useNavigate();
@@ -10,7 +11,7 @@ export function AdminListe() {
   function testPass() {
     axios
       .post(
-        'http://localhost:5000/adminliste',
+        `${ENDPOINT}/adminliste`,
         { pass: password },
         { withCredentials: true }
       )

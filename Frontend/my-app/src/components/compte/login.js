@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useState, useEffect, React } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './login.css';
+import { ENDPOINT } from '../config';
 
 export function Login() {
   const [usernameLog, setUsernameLog] = useState('');
@@ -10,7 +11,7 @@ export function Login() {
 
   useEffect(() => {
     axios
-      .get('http://localhost:5000/checkAuthentication', {
+      .get(`${ENDPOINT}/checkAuthentication`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -26,7 +27,7 @@ export function Login() {
   const login = () => {
     axios
       .post(
-        'http://localhost:5000/login',
+        `${ENDPOINT}/login`,
         {
           email: usernameLog,
           password: passwordLog,

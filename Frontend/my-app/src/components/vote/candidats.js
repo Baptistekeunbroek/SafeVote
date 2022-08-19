@@ -3,6 +3,7 @@ import { useState, useEffect, React } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 import './candidats.css';
 import { Voter } from './voter';
+import { ENDPOINT } from '../config';
 
 export function Candidats() {
   const location = useLocation();
@@ -13,7 +14,7 @@ export function Candidats() {
 
   useEffect(() => {
     axios
-      .get('http://localhost:5000/checkAuthentication', {
+      .get(`${ENDPOINT}/checkAuthentication`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -28,7 +29,7 @@ export function Candidats() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000${location.pathname}`, {
+      .get(`${ENDPOINT}${location.pathname}`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -41,7 +42,7 @@ export function Candidats() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/listes/${idListe}`, {
+      .get(`${ENDPOINT}/listes/${idListe}`, {
         withCredentials: true,
       })
       .then((res) => {

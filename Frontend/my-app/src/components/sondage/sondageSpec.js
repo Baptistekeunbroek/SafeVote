@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import { ENDPOINT } from '../config';
 
 export function SondageSpec() {
   const [sondage, setSondage] = useState([]);
@@ -22,7 +23,7 @@ export function SondageSpec() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/getSondage/${id}`)
+      .get(`${ENDPOINT}/getSondage/${id}`)
       .then((res) => {
         setSondage(res.data.sondage[0]);
       })
@@ -55,7 +56,7 @@ export function SondageSpec() {
   }
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/checkVoteSondage/${id}`, {
+      .get(`${ENDPOINT}/checkVoteSondage/${id}`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -68,7 +69,7 @@ export function SondageSpec() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/getResultatsondage/${id}`)
+      .get(`${ENDPOINT}/getResultatsondage/${id}`)
       .then((res) => {
         calcResultats(res.data.res);
       })
@@ -80,7 +81,7 @@ export function SondageSpec() {
   function soumettreVote() {
     axios
       .post(
-        `http://localhost:5000/voteSondage/${id}`,
+        `${ENDPOINT}/voteSondage/${id}`,
         {
           vote: voteSondage,
         },

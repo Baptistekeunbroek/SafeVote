@@ -1,12 +1,13 @@
 import axios from 'axios';
 import { useEffect, React } from 'react';
+import { ENDPOINT } from '../config';
 
 export function StepResultat({ vote }) {
   useEffect(() => {
     if (vote) {
       axios
         .post(
-          'http://localhost:5000/sendConfirmationEmail',
+          `${ENDPOINT}/sendConfirmationEmail`,
           { vote: vote },
           { withCredentials: true }
         )

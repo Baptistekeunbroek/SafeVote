@@ -3,6 +3,7 @@ import { useEffect, useState, React } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { MultiStepVote } from '../stepsForm/multiStep';
 import './voter.css';
+import { ENDPOINT } from '../config';
 
 export function Voter() {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ export function Voter() {
 
   useEffect(() => {
     axios
-      .get('http://localhost:5000/checkAuthentication', {
+      .get(`${ENDPOINT}/checkAuthentication`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -28,7 +29,7 @@ export function Voter() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000${location.pathname}`, {
+      .get(`${ENDPOINT}${location.pathname}`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -42,7 +43,7 @@ export function Voter() {
   useEffect(() => {
     axios
       .post(
-        'http://localhost:5000/checkVote',
+        `${ENDPOINT}/checkVote`,
         { idListeElec: idListe },
         {
           withCredentials: true,

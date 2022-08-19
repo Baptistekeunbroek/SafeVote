@@ -1,13 +1,14 @@
 import axios from 'axios';
 import { useEffect, React } from 'react';
 import { useLocation } from 'react-router-dom';
+import { ENDPOINT } from '../config';
 
 export function StepVote({ changeState, vote }) {
   const idListe = useLocation().pathname.split('/').pop();
   useEffect(() => {
     axios
       .post(
-        'http://localhost:5000/vote',
+        `${ENDPOINT}/vote`,
         {
           idCandidat: vote.idCandidat,
           idListeElec: idListe,

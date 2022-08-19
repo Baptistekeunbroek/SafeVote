@@ -3,6 +3,7 @@ import * as Yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
+import { ENDPOINT } from '../config';
 
 export function CreerSondage() {
   const [boolOpt3, setBoolOpt3] = useState(false);
@@ -70,7 +71,7 @@ export function CreerSondage() {
     }
     axios
       .post(
-        'http://localhost:5000/creerSondage',
+        `${ENDPOINT}/creerSondage`,
         {
           titre: data.titre,
           description: data.description,
